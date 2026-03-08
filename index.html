@@ -11,75 +11,169 @@
 <meta name="apple-mobile-web-app-title" content="Uno sguardo">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <style>
+  :root{
+    --bg:#f4f8f5;
+    --card:#ffffff;
+    --text:#27322c;
+    --muted:#617067;
+    --line:#dde7df;
+    --green:#68b786;
+    --green-dark:#4f9b6d;
+    --green-soft:#edf7f0;
+    --red:#cb6e6e;
+    --red-dark:#b25a5a;
+    --red-soft:#fff3f3;
+    --shadow:0 8px 26px rgba(0,0,0,0.07);
+    --radius:20px;
+  }
+
+  *{box-sizing:border-box}
   body{
     font-family: Arial, sans-serif;
-    background:#fafafa;
+    background:linear-gradient(180deg,#f8fbf9 0%, var(--bg) 100%);
     margin:0;
-    padding:20px;
+    padding:18px;
+    color:var(--text);
     text-align:center;
-    color:#333;
   }
   .card{
-    background:white;
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:24px 18px;
+    box-shadow:var(--shadow);
+    max-width:560px;
+    margin:0 auto;
+    border:1px solid rgba(221,231,223,0.7);
+  }
+  .logo{
+    width:64px;
+    height:64px;
+    border-radius:18px;
+    margin:0 auto 14px;
+    background:linear-gradient(180deg,#75c28f 0%, #5aae7b 100%);
+    position:relative;
+    box-shadow:0 8px 18px rgba(104,183,134,0.25);
+  }
+  .logo:before{
+    content:"";
+    position:absolute;
+    left:12px; right:12px; top:23px; bottom:23px;
+    border:3px solid #fff;
+    border-radius:999px;
+  }
+  .logo:after{
+    content:"";
+    position:absolute;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:#fff;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+  }
+  h1{font-size:25px; margin:0 0 8px}
+  h2{font-size:23px; margin:0 0 8px}
+  p{font-size:16px; margin:10px 0}
+  .lead{font-size:17px; color:#3d4c43}
+  .prayer{
+    font-style:italic;
+    color:#55635a;
+    background:#f8fbf9;
+    border:1px solid var(--line);
     border-radius:16px;
-    padding:25px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.08);
-    max-width:520px;
-    margin:auto;
-  }
-  h1{font-size:24px; margin:0 0 10px}
-  p{font-size:16px}
-  button{
-    background:#6bbf8a;
-    border:none;
-    color:white;
     padding:14px;
-    margin-top:12px;
-    font-size:16px;
-    border-radius:10px;
-    width:100%;
-    cursor:pointer;
+    margin-top:14px;
   }
-  button:hover{background:#57a875}
-  .secondary{
-    background:#e9eef0;
-    color:#333;
-  }
-  .secondary:hover{background:#dfe6e8}
-  .hidden{display:none}
-  .muted{color:#555; font-size:13px}
+  .small{font-size:14px; color:var(--muted)}
+  .muted{color:var(--muted); font-size:13px}
   .badge{
     display:inline-block;
-    padding:4px 10px;
-    border:1px solid #ddd;
+    padding:6px 12px;
+    border:1px solid var(--line);
     border-radius:999px;
     font-size:12px;
-    color:#444;
-    margin-top:8px;
+    color:#4d5b53;
+    background:#fbfdfb;
+    margin:0 4px 6px;
   }
-  .qtitle{font-size:20px; margin:0 0 12px}
-  .small{font-size:14px; color:#555}
-  .box{
-    text-align:left;
-    border:1px solid #e6e6e6;
-    border-radius:12px;
-    padding:14px;
-    background:#fcfcfc;
-    white-space:pre-wrap;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size:14px;
-    line-height:1.35;
+  .qtitle{
+    font-size:24px;
+    margin:10px 0 8px;
+    line-height:1.25;
   }
-  input, textarea{
-    width:100%;
+  .qhint{
+    font-size:15px;
+    color:#5c6c63;
+    margin-bottom:4px;
+  }
+  button{
+    border:none;
+    padding:16px 16px;
+    margin-top:12px;
     font-size:16px;
-    padding:12px;
-    border-radius:10px;
-    border:1px solid #ccc;
-    margin-top:10px;
-    box-sizing:border-box;
+    border-radius:16px;
+    width:100%;
+    cursor:pointer;
+    transition:transform 0.06s ease, background 0.15s ease, box-shadow 0.15s ease;
   }
-  textarea{min-height:140px}
+  button:active{transform:scale(0.99)}
+  .primary{
+    background:linear-gradient(180deg,var(--green) 0%, var(--green-dark) 100%);
+    color:white;
+    box-shadow:0 8px 18px rgba(104,183,134,0.24);
+  }
+  .primary:hover{filter:brightness(0.98)}
+  .secondary{
+    background:#eef4f0;
+    color:#334138;
+    border:1px solid #dbe6dd;
+  }
+  .secondary:hover{background:#e8f0ea}
+  .answer{
+    text-align:left;
+    min-height:82px;
+    padding:16px 16px 16px 18px;
+    line-height:1.35;
+    font-weight:bold;
+    position:relative;
+    border:1px solid transparent;
+  }
+  .answer .label{
+    display:block;
+    font-size:12px;
+    font-weight:normal;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    margin-bottom:6px;
+    opacity:.85;
+  }
+  .answer-positive{
+    background:var(--green-soft);
+    color:#244031;
+    border-color:#d6e9dc;
+  }
+  .answer-positive:hover{
+    background:#e5f3e9;
+  }
+  .answer-negative{
+    background:var(--red-soft);
+    color:#582f2f;
+    border-color:#f0d2d2;
+  }
+  .answer-negative:hover{
+    background:#fdeaea;
+  }
+  .answer-positive:before,
+  .answer-negative:before{
+    position:absolute;
+    right:14px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:20px;
+    opacity:.7;
+  }
+  .answer-positive:before{content:"✓"}
+  .answer-negative:before{content:"✗"}
+  .hidden{display:none}
   .row{
     display:grid;
     gap:10px;
@@ -88,103 +182,152 @@
   @media(min-width:720px){
     .row{grid-template-columns:1fr 1fr}
   }
+  input, textarea, select{
+    width:100%;
+    font-size:16px;
+    padding:14px;
+    border-radius:14px;
+    border:1px solid #cfd8d1;
+    margin-top:10px;
+    box-sizing:border-box;
+    background:#fff;
+  }
+  select{appearance:none}
+  textarea{
+    min-height:220px;
+    line-height:1.45;
+  }
+  .box{
+    text-align:left;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:16px;
+    background:#fcfdfc;
+    white-space:pre-wrap;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size:14px;
+    line-height:1.5;
+  }
+  .section-title{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    color:#5d6b63;
+    margin-top:8px;
+    text-align:left;
+    font-weight:bold;
+  }
+  .footer-actions{margin-top:16px}
 </style>
 </head>
 <body>
 
 <div class="card" id="screen1">
+  <div class="logo"></div>
   <h1>Uno sguardo dentro di me</h1>
-  <p>Fermati un momento.<br>Guarda con sincerità la tua vita.</p>
+  <p class="lead">Fermati un momento. Guarda con sincerità la tua vita.</p>
 
-  <p style="font-style:italic;">
+  <div class="prayer">
     Signore, aiutami a guardare dentro di me con verità<br>
     e a riconoscere ciò che mi allontana da te.
-  </p>
+  </div>
 
-  <label class="small" style="display:block; text-align:left; margin-top:12px;">Orientamento dell'esame di coscienza</label>
-  <select id="mode" style="width:100%; font-size:16px; padding:12px; border-radius:10px; border:1px solid #ccc; margin-top:8px; box-sizing:border-box;">
+  <div class="prayer" style="margin-top:12px; background:#f3f8f4;">
+    “Rientrato in sé, disse: mi alzerò e andrò da mio padre.”<br>
+    <span class="small">(Lc 15,17-18)</span>
+  </div>
+
+  <label class="section-title">Scegli l'orientamento dell'esame di coscienza</label>
+  <select id="mode">
     <option value="adulti">Adulti</option>
     <option value="giovani">Giovani</option>
   </select>
 
-  <button onclick="start()">Inizia</button>
+  <button class="primary" onclick="start()">Inizia</button>
 
   <div class="row">
-    <button class="secondary" onclick="loadSaved()">Apri promemoria salvato</button>
-    <button class="secondary" onclick="clearSaved()">Cancella promemoria salvato</button>
+    <button class="secondary" onclick="loadSaved()">Apri testo salvato</button>
+    <button class="secondary" onclick="clearSaved()">Cancella testo salvato</button>
   </div>
 
   <p class="muted" style="margin-top:18px">
     Questa app non sostituisce la confessione.<br>
-    Il salvataggio è solo sul tuo dispositivo.
+    Il salvataggio resta solo sul tuo dispositivo.
   </p>
 </div>
 
 <div class="card hidden" id="screen2">
-  <div class="badge" id="progress"></div>
+  <div>
+    <span class="badge" id="progress"></span>
+    <span class="badge" id="modeBadge"></span>
+  </div>
+  <div class="qhint" id="questionHint"></div>
   <h2 class="qtitle" id="question"></h2>
-  <p class="small">Scegli una risposta. Il promemoria sarà creato automaticamente.</p>
+  <p class="small">Scegli l'affermazione che descrive meglio la tua situazione.</p>
 
-  <button onclick="answer('Si')">Sì</button>
-  <button onclick="answer('Poco')">Poco</button>
-  <button onclick="answer('No')">No</button>
-  <button class="secondary" onclick="answer('Skip')">Preferisco non rispondere</button>
+  <button id="positiveBtn" class="answer answer-positive" onclick="answerCurrent(false)"></button>
+  <button id="negativeBtn" class="answer answer-negative" onclick="answerCurrent(true)"></button>
 </div>
 
 <div class="card hidden" id="screen3">
-  <h1>Il mio promemoria</h1>
-  <p class="small">Traccia sobria: mostra solo ciò che hai segnato come “Poco” o “No”.</p>
+  <h1>Un piccolo passo per ricominciare</h1>
+  <p class="small">Puoi scrivere un proposito concreto, semplice e possibile. È facoltativo.</p>
 
-  <div class="box" id="report"></div>
-
-  <label class="small" style="display:block; text-align:left; margin-top:10px;">
-    Proposito concreto (una frase, facoltativo)
-  </label>
-  <input id="proposito" placeholder="Es. parlare con più calma; pregare 5 minuti; perdonare..." />
+  <input id="proposito" placeholder="Es. pregherò qualche minuto ogni giorno; cercherò più pazienza; sarò più sincero..." />
 
   <div class="row">
-    <button class="secondary" onclick="toggleEdit()">Modifica promemoria</button>
-    <button class="secondary" onclick="saveLocal()">Salva promemoria</button>
-  </div>
-
-  <div class="row">
-    <button class="secondary" onclick="exportTxt()">Salva come file (.txt)</button>
-    <button class="secondary" onclick="copyReport()">Copia promemoria</button>
-  </div>
-
-  <button onclick="finish()">Concludi</button>
-  <button class="secondary" onclick="restart()" style="margin-top:10px">Ricomincia</button>
-</div>
-
-<div class="card hidden" id="screen3edit">
-  <h1>Modifica promemoria</h1>
-  <p class="small">Puoi accorciare o togliere righe. Meglio parole-chiave, non dettagli.</p>
-
-  <textarea id="reportEdit"></textarea>
-
-  <div class="row">
-    <button onclick="applyEdit()">Applica modifiche</button>
-    <button class="secondary" onclick="toggleEdit()">Annulla</button>
-  </div>
-
-  <div class="row">
-    <button class="secondary" onclick="prepareConfessionText()">Prepara testo da leggere</button>
-  </div>
-
-  <div class="row">
-    <button class="secondary" onclick="saveLocal()">Salva promemoria</button>
-    <button class="secondary" onclick="exportTxt()">Salva come file (.txt)</button>
+    <button class="primary" onclick="generateConfessionText()">Genera testo per la confessione</button>
+    <button class="secondary" onclick="skipProposito()">Salta</button>
   </div>
 </div>
 
 <div class="card hidden" id="screen4">
+  <h1>Testo per la confessione</h1>
+  <p class="small">Puoi leggerlo così com'è, oppure modificarlo.</p>
+
+  <div class="box" id="finalText"></div>
+
+  <div class="row footer-actions">
+    <button class="secondary" onclick="toggleEdit()">Modifica</button>
+    <button class="secondary" onclick="saveLocal()">Salva</button>
+  </div>
+
+  <div class="row">
+    <button class="secondary" onclick="exportTxt()">Salva come file (.txt)</button>
+    <button class="secondary" onclick="window.print()">Stampa</button>
+  </div>
+
+  <div class="row">
+    <button class="secondary" onclick="copyText()">Copia testo</button>
+    <button class="secondary" onclick="restart()">Nuovo esame</button>
+  </div>
+</div>
+
+<div class="card hidden" id="screen4edit">
+  <h1>Modifica il testo</h1>
+  <p class="small">Puoi correggere, accorciare o personalizzare il testo prima di salvarlo.</p>
+
+  <textarea id="editText"></textarea>
+
+  <div class="row">
+    <button class="primary" onclick="applyEdit()">Applica modifiche</button>
+    <button class="secondary" onclick="toggleEdit()">Annulla</button>
+  </div>
+
+  <div class="row">
+    <button class="secondary" onclick="saveLocal()">Salva</button>
+    <button class="secondary" onclick="exportTxt()">Salva come file (.txt)</button>
+  </div>
+</div>
+
+<div class="card hidden" id="screen5">
   <h1>Grazie per questo momento</h1>
 
-  <p style="font-style:italic;">
+  <div class="prayer">
     Signore, tu conosci il mio cuore.<br>
     Donami la forza di ricominciare<br>
     e di camminare nella tua misericordia.
-  </p>
+  </div>
 
   <p>La misericordia permette sempre di ricominciare.</p>
 
@@ -193,45 +336,189 @@
 
 <script>
   let step = 0;
+  let mode = "adulti";
+  let questions = [];
+  let negatives = [];
+
+  const STORAGE_KEY = "sguardo_confessione_v8";
 
   const questionSets = {
     adulti: [
-      "Ho coltivato la relazione con Dio nella preghiera o l’ho trascurata?",
-      "Ho vissuto la Messa e la Parola con fede o per abitudine?",
-      "Nelle difficoltà ho cercato Dio con fiducia o mi sono chiuso nella sfiducia?",
-      "Ho parlato bene degli altri o ho ceduto a giudizi e mormorazioni?",
-      "Ho perdonato o conservo rancore e durezza nel cuore?",
-      "Ho ascoltato davvero chi mi è vicino (famiglia, amici, colleghi)?",
-      "Ho svolto con onestà e responsabilità i miei doveri (casa, lavoro)?",
-      "Ho usato bene tempo e denaro o ho ceduto a sprechi/egoismo/ansia?",
-      "Ho detto la verità o ho preferito scuse, mezze verità, silenzi comodi?",
-      "Ho cercato pace interiore o ho alimentato rabbia, ansia, nervosismo?",
-      "Ho custodito sobrietà e libertà nelle abitudini (social, consumi, ecc.)?",
-      "Ho fatto il bene che potevo o ho lasciato passare occasioni di carità?"
+      {
+        area: "Rapporto con Dio",
+        prompt: "Nella mia giornata ho coltivato davvero uno spazio per Dio, con preghiera, silenzio o ascolto della sua Parola?",
+        positive: "Sì, ho cercato Dio con fedeltà nella preghiera e nel silenzio",
+        negative: "No, ho trascurato la preghiera e il rapporto personale con Dio",
+        confession: "aver trascurato la preghiera e la relazione con Dio"
+      },
+      {
+        area: "Messa e vita sacramentale",
+        prompt: "Ho vissuto la Messa domenicale e l'ascolto della Parola come un incontro vero con il Signore?",
+        positive: "Sì, ho vissuto la Messa e la Parola con fede e partecipazione",
+        negative: "No, ho vissuto la Messa e la Parola solo per abitudine o con poca partecipazione",
+        confession: "aver vissuto la Messa e la Parola con poca fede o solo per abitudine"
+      },
+      {
+        area: "Fiducia",
+        prompt: "Nelle difficoltà, nelle paure e nelle preoccupazioni mi sono affidato a Dio oppure mi sono chiuso nella sfiducia?",
+        positive: "Sì, nelle difficoltà ho cercato di affidarmi a Dio",
+        negative: "No, nelle difficoltà mi sono chiuso nella sfiducia e nel lamento",
+        confession: "essermi chiuso nella sfiducia nelle difficoltà"
+      },
+      {
+        area: "Parole sugli altri",
+        prompt: "Nel parlare degli altri ho custodito rispetto, verità e carità, evitando giudizi e mormorazioni?",
+        positive: "Sì, ho parlato degli altri con rispetto e carità",
+        negative: "No, ho ceduto a giudizi, critiche e mormorazioni",
+        confession: "i giudizi e le mormorazioni verso gli altri"
+      },
+      {
+        area: "Perdono",
+        prompt: "Di fronte alle ferite ricevute ho cercato di perdonare o ho conservato rancore, chiusura e durezza nel cuore?",
+        positive: "Sì, ho cercato la via del perdono",
+        negative: "No, ho conservato rancore e durezza nel cuore",
+        confession: "il rancore e la durezza nel cuore"
+      },
+      {
+        area: "Ascolto e vicinanza",
+        prompt: "In famiglia, con gli amici o con i colleghi ho saputo ascoltare davvero, con pazienza e attenzione?",
+        positive: "Sì, ho cercato di ascoltare davvero chi mi è vicino",
+        negative: "No, ho fatto fatica ad ascoltare con attenzione e pazienza",
+        confession: "la difficoltà ad ascoltare davvero chi mi è vicino"
+      },
+      {
+        area: "Doveri quotidiani",
+        prompt: "Nei doveri di casa, di lavoro e nelle responsabilità quotidiane sono stato fedele, serio e onesto?",
+        positive: "Sì, ho vissuto con responsabilità i miei doveri quotidiani",
+        negative: "No, sono stato poco fedele nei miei doveri di casa o di lavoro",
+        confession: "la poca fedeltà nei miei doveri di casa e di lavoro"
+      },
+      {
+        area: "Tempo e denaro",
+        prompt: "Ho usato bene il mio tempo, il denaro e le risorse ricevute, con sobrietà, equilibrio e generosità?",
+        positive: "Sì, ho usato con equilibrio tempo, denaro e risorse",
+        negative: "No, non ho usato bene il tempo, il denaro o le risorse ricevute",
+        confession: "non aver sempre usato bene il tempo e il denaro"
+      },
+      {
+        area: "Verità",
+        prompt: "Nelle parole e nei comportamenti ho cercato sincerità e verità, evitando scuse, mezze verità e silenzi comodi?",
+        positive: "Sì, ho cercato la verità e la sincerità",
+        negative: "No, ho preferito scuse, mezze verità o silenzi comodi",
+        confession: "le scuse, le mezze verità e i silenzi comodi"
+      },
+      {
+        area: "Vita interiore",
+        prompt: "Ho custodito pace, mitezza e fiducia, oppure ho alimentato dentro di me rabbia, ansia e nervosismo?",
+        positive: "Sì, ho cercato pace interiore, fiducia e mitezza",
+        negative: "No, ho alimentato rabbia, ansia e nervosismo",
+        confession: "aver alimentato rabbia, ansia e nervosismo"
+      },
+      {
+        area: "Sobrietà",
+        prompt: "Nel cibo, nel bere, nell'uso del telefono, dei consumi e delle abitudini quotidiane ho vissuto con libertà e sobrietà?",
+        positive: "Sì, ho cercato sobrietà e libertà nelle abitudini quotidiane",
+        negative: "No, mi sono lasciato condizionare eccessivamente dalle abitudini o dai consumi",
+        confession: "la poca sobrietà e libertà nelle abitudini quotidiane"
+      },
+      {
+        area: "Carità concreta",
+        prompt: "Di fronte al bene possibile, ai bisogni degli altri e alle occasioni di carità mi sono messo in gioco oppure sono rimasto fermo?",
+        positive: "Sì, ho cercato di fare il bene possibile con concretezza",
+        negative: "No, ho lasciato passare occasioni di carità e di bene concreto",
+        confession: "le occasioni di carità lasciate passare"
+      }
     ],
     giovani: [
-      "Ho cercato Dio con sincerità o l’ho lasciato ai margini della mia giornata?",
-      "Ho pregato almeno qualche volta con il cuore o solo per abitudine?",
-      "Ho vissuto la Messa come incontro vero o come qualcosa di esterno?",
-      "Ho rispettato me stesso nel corpo, nelle parole e nelle scelte?",
-      "Ho usato bene il telefono, i social e internet o mi sono lasciato dominare?",
-      "Sono stato leale con amici, compagni, genitori e insegnanti?",
-      "Ho preso in giro, escluso o giudicato qualcuno?",
-      "Ho cercato la verità oppure ho detto bugie, nascosto, fatto il furbo?",
-      "Ho vissuto l'affettività con rispetto o con superficialità?",
-      "Ho saputo chiedere scusa e perdonare oppure mi sono chiuso nell'orgoglio?",
-      "Ho sprecato tempo e talenti o li ho messi a frutto?",
-      "Ho fatto il bene che potevo fare oppure sono rimasto nell'indifferenza?"
+      {
+        area: "Rapporto con Dio",
+        prompt: "Nella mia giornata ho cercato davvero Dio, dandogli un po' di spazio nel cuore, nei pensieri e nelle scelte?",
+        positive: "Sì, ho cercato Dio con sincerità nella mia giornata",
+        negative: "No, ho lasciato Dio ai margini della mia giornata",
+        confession: "aver lasciato Dio ai margini della mia giornata"
+      },
+      {
+        area: "Preghiera",
+        prompt: "Ho pregato con verità di cuore, anche poco ma con sincerità, oppure solo per abitudine o quasi mai?",
+        positive: "Sì, ho pregato con verità di cuore",
+        negative: "No, ho pregato solo per abitudine o molto poco",
+        confession: "aver pregato solo per abitudine o con poca verità di cuore"
+      },
+      {
+        area: "Messa",
+        prompt: "Ho vissuto la Messa come un incontro con Gesù e con la comunità, oppure come qualcosa di esterno e lontano?",
+        positive: "Sì, ho vissuto la Messa come un vero incontro",
+        negative: "No, ho vissuto la Messa come qualcosa di esterno e poco importante",
+        confession: "aver vissuto la Messa come qualcosa di esterno"
+      },
+      {
+        area: "Rispetto di sé",
+        prompt: "Nel corpo, nelle parole, nei pensieri e nelle scelte ho rispettato me stesso e la mia dignità?",
+        positive: "Sì, ho cercato di rispettare me stesso nelle parole e nelle scelte",
+        negative: "No, ho mancato di rispetto verso me stesso",
+        confession: "la mancanza di rispetto verso me stesso nel corpo, nelle parole o nelle scelte"
+      },
+      {
+        area: "Telefono e social",
+        prompt: "Ho usato telefono, social, video e internet con equilibrio, oppure mi sono lasciato dominare e assorbire troppo?",
+        positive: "Sì, ho usato telefono e social con equilibrio e libertà",
+        negative: "No, mi sono lasciato dominare dal telefono, dai social o da internet",
+        confession: "essermi lasciato dominare dal telefono, dai social o da internet"
+      },
+      {
+        area: "Lealtà",
+        prompt: "Con amici, compagni, genitori e insegnanti sono stato leale, corretto e trasparente?",
+        positive: "Sì, sono stato leale con amici, compagni e familiari",
+        negative: "No, sono stato poco leale con gli altri",
+        confession: "la poca lealtà con amici, compagni, genitori o insegnanti"
+      },
+      {
+        area: "Giudizio ed esclusione",
+        prompt: "Nel gruppo, a scuola o nelle amicizie ho rispettato tutti oppure ho preso in giro, escluso o giudicato qualcuno?",
+        positive: "Sì, ho rispettato gli altri senza escludere o umiliare nessuno",
+        negative: "No, ho preso in giro, escluso o giudicato qualcuno",
+        confession: "aver preso in giro, escluso o giudicato qualcuno"
+      },
+      {
+        area: "Sincerità",
+        prompt: "Ho cercato la verità e la sincerità, oppure ho detto bugie, nascosto cose o fatto il furbo?",
+        positive: "Sì, ho cercato sincerità e trasparenza",
+        negative: "No, ho detto bugie, nascosto o fatto il furbo",
+        confession: "le bugie, le cose nascoste e i comportamenti furbi"
+      },
+      {
+        area: "Affettività",
+        prompt: "Nel modo di vivere l'amicizia, l'affetto e l'attrazione ho cercato rispetto, delicatezza e verità?",
+        positive: "Sì, ho vissuto l'affettività con rispetto e responsabilità",
+        negative: "No, ho vissuto l'affettività con superficialità",
+        confession: "aver vissuto l'affettività con superficialità"
+      },
+      {
+        area: "Orgoglio e perdono",
+        prompt: "Ho saputo chiedere scusa, riconoscere i miei errori e perdonare, oppure mi sono chiuso nell'orgoglio?",
+        positive: "Sì, ho cercato di chiedere scusa e di perdonare",
+        negative: "No, mi sono chiuso nell'orgoglio e ho fatto fatica a chiedere scusa o a perdonare",
+        confession: "essermi chiuso nell'orgoglio e nella difficoltà a chiedere scusa o perdonare"
+      },
+      {
+        area: "Tempo e talenti",
+        prompt: "Ho usato bene il mio tempo, le mie capacità e i miei talenti, oppure li ho sprecati in superficialità e pigrizia?",
+        positive: "Sì, ho cercato di mettere a frutto tempo e talenti",
+        negative: "No, ho sprecato tempo e talenti",
+        confession: "aver sprecato tempo e talenti"
+      },
+      {
+        area: "Bene possibile",
+        prompt: "Quando potevo fare qualcosa di buono, aiutare, incoraggiare o farmi vicino, l'ho fatto davvero?",
+        positive: "Sì, ho cercato di fare il bene possibile",
+        negative: "No, sono rimasto nell'indifferenza invece di fare il bene possibile",
+        confession: "essere rimasto nell'indifferenza invece di fare il bene possibile"
+      }
     ]
   };
 
-  let questions = questionSets.adulti;
-
-  const flagged = [];
-  const STORAGE_KEY = "sguardo_promemoria_v4";
-
   function show(id){
-    ["screen1","screen2","screen3","screen3edit","screen4"].forEach(x=>{
+    ["screen1","screen2","screen3","screen4","screen4edit","screen5"].forEach(x=>{
       document.getElementById(x).classList.add("hidden");
     });
     document.getElementById(id).classList.remove("hidden");
@@ -239,159 +526,87 @@
 
   function start(){
     step = 0;
-    flagged.length = 0;
+    negatives = [];
     document.getElementById("proposito").value = "";
-    const mode = document.getElementById("mode").value || "adulti";
+    mode = document.getElementById("mode").value || "adulti";
     questions = questionSets[mode] || questionSets.adulti;
     show("screen2");
     showQuestion();
   }
 
   function showQuestion(){
-    document.getElementById("question").innerText = questions[step];
+    const q = questions[step];
     document.getElementById("progress").innerText = `Domanda ${step+1} di ${questions.length}`;
+    document.getElementById("modeBadge").innerText = mode === "giovani" ? "Giovani" : "Adulti";
+    document.getElementById("questionHint").innerText = q.area;
+    document.getElementById("question").innerText = q.prompt;
+    document.getElementById("positiveBtn").innerHTML = `<span class="label">Scelta positiva</span>${q.positive}`;
+    document.getElementById("negativeBtn").innerHTML = `<span class="label">Da portare in confessione</span>${q.negative}`;
   }
 
-  function answer(a){
+  function answerCurrent(isNegative){
     const q = questions[step];
-    if (a === "Poco" || a === "No") flagged.push({ q, a });
-
+    if (isNegative) negatives.push(q.confession);
     step++;
     if(step < questions.length){
       showQuestion();
     } else {
       show("screen3");
-      buildReport();
     }
   }
 
-  function buildReport(){
-    const today = new Date().toLocaleDateString('it-IT');
-    const lines = [];
-    lines.push(`PROMEMORIA (solo per me) – ${today}`);
-    lines.push("");
-    lines.push("Chiedo perdono per:");
-    if (flagged.length === 0) {
-      lines.push("• (Nessun punto segnato come ‘Poco’ o ‘No’.)");
-      lines.push("• Posso comunque portare ciò che mi pesa nel cuore.");
+  function skipProposito(){
+    generateConfessionText();
+  }
+
+  function generateConfessionText(){
+    let text = "Padre, chiedo perdono per ";
+    if (negatives.length === 0) {
+      text += "la poca chiarezza nel riconoscere i miei limiti e per tutto ciò che porto nel cuore. Mi affido alla misericordia di Dio.";
+    } else if (negatives.length === 1) {
+      text += negatives[0] + ". Desidero affidare tutto questo alla misericordia di Dio.";
+    } else if (negatives.length === 2) {
+      text += negatives[0] + " e per " + negatives[1] + ". Desidero affidare tutto questo alla misericordia di Dio.";
     } else {
-      flagged.forEach((it) => lines.push(`• [${it.a}] ${it.q}`));
+      text += negatives.slice(0, -1).join(", per ") + ", e per " + negatives[negatives.length - 1] + ". Desidero affidare tutto questo alla misericordia di Dio.";
     }
-    lines.push("");
-    lines.push("Da affidare alla misericordia di Dio nel sacramento.");
-    document.getElementById("report").textContent = lines.join("\n");
-  }
 
-  function getCurrentReportText(includeProposito = true){
-    const base = document.getElementById("report").textContent || "";
     const prop = document.getElementById("proposito").value.trim();
-    return (includeProposito && prop) ? `${base}\n\nProposito concreto:\n• ${prop}` : base;
+    if (prop) {
+      text += "\n\nProposito concreto: " + prop;
+    }
+
+    text += "\n\nPiccolo gesto penitenziale suggerito: prenditi oggi qualche minuto di silenzio, recita con calma un Padre nostro e compi un gesto concreto di bene verso una persona vicina.";
+
+    document.getElementById("finalText").textContent = text;
+    show("screen4");
   }
 
   function toggleEdit(){
-    if (!document.getElementById("screen3edit").classList.contains("hidden")) {
-      show("screen3");
+    if (!document.getElementById("screen4edit").classList.contains("hidden")) {
+      show("screen4");
       return;
     }
-    document.getElementById("reportEdit").value = getCurrentReportText();
-    show("screen3edit");
+    document.getElementById("editText").value = document.getElementById("finalText").textContent || "";
+    show("screen4edit");
   }
 
   function applyEdit(){
-    const txt = document.getElementById("reportEdit").value || "";
-    if (txt.includes("Proposito concreto:")) {
-      document.getElementById("proposito").value = "";
-    }
-    document.getElementById("report").textContent = txt;
-    show("screen3");
-  }
-
-  function prepareConfessionText(){
-    const sourceText = document.getElementById("report").textContent || "";
-    const lines = sourceText.split("\n").map(l => l.trim()).filter(Boolean);
-
-    const cleanPoints = lines
-      .filter(l => l.startsWith("•"))
-      .map(l => l.replace(/^•\s*/, "").replace(/^\[(Poco|No)\]\s*/, "").trim())
-      .filter(l => !l.toLowerCase().startsWith("(nessun punto segnato"))
-      .filter(l => !l.toLowerCase().startsWith("posso comunque portare"))
-      .filter(l => !l.toLowerCase().startsWith("proposito concreto"))
-      .filter(l => l.length > 0);
-
-    let text = "Padre, chiedo perdono per ";
-
-    if (cleanPoints.length === 0) {
-      text += "la poca chiarezza nel riconoscere i miei limiti e per tutto ciò che porto nel cuore. Mi affido alla misericordia di Dio.";
-    } else {
-      const normalized = cleanPoints.map(point => normalizePoint(point));
-      let listed = "";
-      if (normalized.length === 1) {
-        listed = normalized[0];
-      } else if (normalized.length === 2) {
-        listed = normalized[0] + " e per " + normalized[1];
-      } else {
-        listed = normalized.slice(0, -1).join(", per ") + ", e per " + normalized[normalized.length - 1];
-      }
-      text += listed + ". Desidero affidare tutto questo alla misericordia di Dio.";
-    }
-
-    const prop = document.getElementById("proposito").value.trim();
-    let finalText = "Testo da leggere in confessione\n\n" + text;
-    if (prop) {
-      finalText += "\n\nProposito concreto: " + prop;
-    }
-    document.getElementById("reportEdit").value = finalText;
-  }
-
-  function normalizePoint(point){
-    let p = point.trim().replace(/\?$/, "");
-    p = p.charAt(0).toLowerCase() + p.slice(1);
-
-    const replacements = [
-      [/^ho coltivato la relazione con Dio nella preghiera o l’ho trascurata$/i, "aver trascurato la preghiera e la relazione con Dio"],
-      [/^ho vissuto la Messa e la Parola con fede o per abitudine$/i, "aver vissuto la Messa e la Parola con poca fede o solo per abitudine"],
-      [/^nelle difficoltà ho cercato Dio con fiducia o mi sono chiuso nella sfiducia$/i, "essermi chiuso nella sfiducia nelle difficoltà"],
-      [/^ho parlato bene degli altri o ho ceduto a giudizi e mormorazioni$/i, "i giudizi e le mormorazioni verso gli altri"],
-      [/^ho perdonato o conservo rancore e durezza nel cuore$/i, "il rancore e la durezza nel cuore"],
-      [/^ho ascoltato davvero chi mi è vicino \(famiglia, amici, colleghi\)$/i, "la difficoltà ad ascoltare davvero chi mi è vicino"],
-      [/^ho svolto con onestà e responsabilità i miei doveri \(casa, lavoro\)$/i, "la poca fedeltà nei miei doveri di casa e di lavoro"],
-      [/^ho usato bene tempo e denaro o ho ceduto a sprechi\/egoismo\/ansia$/i, "non aver sempre usato bene il tempo e il denaro"],
-      [/^ho detto la verità o ho preferito scuse, mezze verità, silenzi comodi$/i, "le scuse, le mezze verità e i silenzi comodi"],
-      [/^ho cercato pace interiore o ho alimentato rabbia, ansia, nervosismo$/i, "aver alimentato rabbia, ansia e nervosismo"],
-      [/^ho custodito sobrietà e libertà nelle abitudini \(social, consumi, ecc\.\)$/i, "la poca sobrietà e libertà nelle abitudini quotidiane"],
-      [/^ho fatto il bene che potevo o ho lasciato passare occasioni di carità$/i, "le occasioni di carità lasciate passare"],
-
-      [/^ho cercato Dio con sincerità o l’ho lasciato ai margini della mia giornata$/i, "aver lasciato Dio ai margini della mia giornata"],
-      [/^ho pregato almeno qualche volta con il cuore o solo per abitudine$/i, "aver pregato solo per abitudine o con poca verità di cuore"],
-      [/^ho vissuto la Messa come incontro vero o come qualcosa di esterno$/i, "aver vissuto la Messa come qualcosa di esterno"],
-      [/^ho rispettato me stesso nel corpo, nelle parole e nelle scelte$/i, "la mancanza di rispetto verso me stesso nel corpo, nelle parole o nelle scelte"],
-      [/^ho usato bene il telefono, i social e internet o mi sono lasciato dominare$/i, "essermi lasciato dominare dal telefono, dai social o da internet"],
-      [/^sono stato leale con amici, compagni, genitori e insegnanti$/i, "la poca lealtà con amici, compagni, genitori o insegnanti"],
-      [/^ho preso in giro, escluso o giudicato qualcuno$/i, "aver preso in giro, escluso o giudicato qualcuno"],
-      [/^ho cercato la verità oppure ho detto bugie, nascosto, fatto il furbo$/i, "le bugie, le cose nascoste e i comportamenti furbi"],
-      [/^ho vissuto l'affettività con rispetto o con superficialità$/i, "aver vissuto l'affettività con superficialità"],
-      [/^ho saputo chiedere scusa e perdonare oppure mi sono chiuso nell'orgoglio$/i, "essermi chiuso nell'orgoglio e nella difficoltà a chiedere scusa o perdonare"],
-      [/^ho sprecato tempo e talenti o li ho messi a frutto$/i, "aver sprecato tempo e talenti"],
-      [/^ho fatto il bene che potevo fare oppure sono rimasto nell'indifferenza$/i, "essere rimasto nell'indifferenza invece di fare il bene possibile"]
-    ];
-
-    for (const [pattern, replacement] of replacements) {
-      if (pattern.test(p)) return replacement;
-    }
-
-    return p.replace(/^ho\s+/i, "aver ");
+    document.getElementById("finalText").textContent = document.getElementById("editText").value || "";
+    show("screen4");
   }
 
   function saveLocal(){
     try{
       const payload = {
         savedAt: new Date().toISOString(),
-        text: document.getElementById("screen3edit").classList.contains("hidden")
-          ? getCurrentReportText()
-          : document.getElementById("reportEdit").value
+        mode: mode,
+        text: document.getElementById("screen4edit").classList.contains("hidden")
+          ? document.getElementById("finalText").textContent
+          : document.getElementById("editText").value
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-      alert("Promemoria salvato sul dispositivo.");
+      alert("Testo salvato sul dispositivo.");
     } catch(e){
       alert("Impossibile salvare (memoria piena o limitazioni del browser).");
     }
@@ -400,54 +615,44 @@
   function loadSaved(){
     try{
       const raw = localStorage.getItem(STORAGE_KEY);
-      if(!raw){ alert("Nessun promemoria salvato."); return; }
+      if(!raw){ alert("Nessun testo salvato."); return; }
       const payload = JSON.parse(raw);
-      show("screen3");
-      document.getElementById("report").textContent = payload.text || "";
-      document.getElementById("proposito").value = "";
+      document.getElementById("finalText").textContent = payload.text || "";
+      show("screen4");
     } catch(e){
-      alert("Non riesco a leggere il promemoria salvato.");
+      alert("Non riesco a leggere il testo salvato.");
     }
   }
 
   function clearSaved(){
-    if(!confirm("Cancellare il promemoria salvato dal dispositivo?")) return;
+    if(!confirm("Cancellare il testo salvato dal dispositivo?")) return;
     localStorage.removeItem(STORAGE_KEY);
-    alert("Promemoria salvato cancellato.");
+    alert("Testo salvato cancellato.");
   }
 
   function exportTxt(){
-    const text = document.getElementById("screen3edit").classList.contains("hidden")
-      ? getCurrentReportText()
-      : document.getElementById("reportEdit").value;
+    const text = document.getElementById("screen4edit").classList.contains("hidden")
+      ? document.getElementById("finalText").textContent
+      : document.getElementById("editText").value;
     const blob = new Blob([text], {type:"text/plain;charset=utf-8"});
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     const today = new Date().toLocaleDateString('it-IT').replaceAll("/","-");
     a.href = url;
-    a.download = `promemoria_confessione_${today}.txt`;
+    a.download = `testo_confessione_${today}.txt`;
     document.body.appendChild(a);
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
   }
 
-  function copyReport(){
-    const text = getCurrentReportText();
+  function copyText(){
+    const text = document.getElementById("finalText").textContent || "";
     navigator.clipboard.writeText(text).then(()=>{
-      alert("Promemoria copiato.");
+      alert("Testo copiato.");
     }).catch(()=>{
       alert("Copia non disponibile: prova a selezionare e copiare manualmente.");
     });
-  }
-
-  function finish(){
-    const base = document.getElementById("report").textContent || "";
-    const prop = document.getElementById("proposito").value.trim();
-    if (prop && !base.includes("Proposito concreto:")) {
-      document.getElementById("report").textContent = `${base}\n\nProposito concreto:\n• ${prop}`;
-    }
-    show("screen4");
   }
 
   function restart(){
