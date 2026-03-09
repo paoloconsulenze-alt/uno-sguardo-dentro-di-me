@@ -546,7 +546,7 @@
 
   function answerCurrent(isNegative){
     const q = questions[step];
-    if (isNegative) negatives.push(q.confession);
+    if (isNegative) negatives.push({confession:q.confession, area:q.area});
     step++;
     if(step < questions.length){
       showQuestion();
@@ -564,11 +564,11 @@
     if (negatives.length === 0) {
       text += "la poca chiarezza nel riconoscere i miei limiti e per tutto ciò che porto nel cuore. Mi affido alla misericordia di Dio.";
     } else if (negatives.length === 1) {
-      text += negatives[0] + ". Desidero affidare tutto questo alla misericordia di Dio.";
+      text += negatives[0].confession + ". Desidero affidare tutto questo alla misericordia di Dio.";
     } else if (negatives.length === 2) {
-      text += negatives[0] + " e per " + negatives[1] + ". Desidero affidare tutto questo alla misericordia di Dio.";
+      text += negatives[0].confession + " e per " + negatives[1].confession + ". Desidero affidare tutto questo alla misericordia di Dio.";
     } else {
-      text += negatives.slice(0, -1).join(", per ") + ", e per " + negatives[negatives.length - 1] + ". Desidero affidare tutto questo alla misericordia di Dio.";
+      text += negatives.slice(0, -1).map(n=>n.confession).join(", per ") + ", e per " + negatives[negatives.length - 1].confession + ". Desidero affidare tutto questo alla misericordia di Dio.";
     }
 
     const prop = document.getElementById("proposito").value.trim();
@@ -576,7 +576,47 @@
       text += "\n\nProposito concreto: " + prop;
     }
 
-    text += "\n\nPiccolo gesto penitenziale suggerito: prenditi oggi qualche minuto di silenzio, recita con calma un Padre nostro e compi un gesto concreto di bene verso una persona vicina.";
+    
+    const gestureMap = {
+      "Rapporto con Dio": "dedica oggi qualche minuto di silenzio e recita lentamente il Padre nostro.",
+      "Messa e vita sacramentale": "rileggi con calma un breve passo del Vangelo e fermati su una frase.",
+      "Fiducia": "affida a Dio una preoccupazione concreta con una breve preghiera.",
+      "Parole sugli altri": "evita oggi ogni parola negativa e prova a dire una parola buona su qualcuno.",
+      "Perdono": "pensa a una persona verso cui hai durezza e prova a fare un gesto di riconciliazione.",
+      "Ascolto e vicinanza": "dedica oggi qualche minuto ad ascoltare davvero una persona vicina.",
+      "Doveri quotidiani": "compi con cura un piccolo dovere che avevi rimandato.",
+      "Tempo e denaro": "fai oggi un uso più sobrio del tempo o di una spesa non necessaria.",
+      "Verità": "scegli oggi una parola di sincerità semplice e coraggiosa.",
+      "Vita interiore": "prenditi qualche minuto di calma e affidati a Dio nel silenzio.",
+      "Sobrietà": "riduci oggi un'abitudine superflua e usa quel tempo per qualcosa di buono.",
+      "Carità concreta": "compi oggi un gesto concreto di aiuto verso qualcuno.",
+      "Preghiera": "ritaglia oggi qualche minuto per parlare con Dio con semplicità.",
+      "Messa": "leggi oggi un breve passo del Vangelo.",
+      "Rispetto di sé": "tratta te stesso con più rispetto nelle parole e nelle scelte.",
+      "Telefono e social": "prenditi almeno un'ora senza telefono e dedicati a una persona reale.",
+      "Lealtà": "fai oggi un gesto di sincerità verso qualcuno.",
+      "Giudizio ed esclusione": "rivolgi una parola gentile a qualcuno che di solito resta ai margini.",
+      "Sincerità": "scegli oggi di dire la verità con semplicità.",
+      "Affettività": "mostra rispetto e delicatezza in un gesto o in una parola.",
+      "Orgoglio e perdono": "prova oggi a chiedere scusa o a fare il primo passo.",
+      "Tempo e talenti": "dedica tempo a qualcosa che valorizzi davvero le tue capacità.",
+      "Bene possibile": "compi oggi un piccolo gesto gratuito di aiuto."
+    };
+
+    let gesture = null;
+    for (let n of negatives){
+      if (gestureMap[n.area]){
+        gesture = gestureMap[n.area];
+        break;
+      }
+    }
+
+    if (!gesture){
+      gesture = "prenditi oggi qualche minuto di silenzio e recita con calma un Padre nostro.";
+    }
+
+    text += "\n\nInvito concreto: " + gesture;
+
 
     document.getElementById("finalText").textContent = text;
     show("screen4");
