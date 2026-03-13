@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Uno sguardo dentro di me – App per l'esame di coscienza</title>
-<meta name="description" content="Uno sguardo dentro di me è una semplice app gratuita che aiuta a fare un esame di coscienza personale con serenità e fiducia nella misericordia di Dio.">
-<meta name="keywords" content="uno sguardo dentro di me, esame di coscienza, confessione, misericordia, app confessione">
+<meta name="description" content="Una semplice app gratuita per prepararsi alla confessione e fare un esame di coscienza personale con serenità e fiducia nella misericordia di Dio.">
+<meta name="keywords" content="uno sguardo dentro di me, esame di coscienza, confessione cattolica, come confessarsi, prepararsi alla confessione, app confessione, esame di coscienza giovani, esame di coscienza adulti">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/">
-<meta property="og:title" content="Uno sguardo dentro di me">
-<meta property="og:description" content="Una semplice app gratuita che aiuta a fare un esame di coscienza personale con serenità e fiducia nella misericordia di Dio.">
+<meta property="og:title" content="Uno sguardo dentro di me – App per prepararsi alla confessione">
+<meta property="og:description" content="Una piccola app gratuita che aiuta a fare un esame di coscienza e prepararsi alla confessione con serenità e fiducia nella misericordia di Dio.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/">
 <meta property="og:image" content="https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/social-preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Uno sguardo dentro di me">
-<meta name="twitter:description" content="Una semplice app gratuita che aiuta a fare un esame di coscienza personale con serenità e fiducia nella misericordia di Dio.">
+<meta name="twitter:title" content="Uno sguardo dentro di me – App per prepararsi alla confessione">
+<meta name="twitter:description" content="Una piccola app gratuita che aiuta a fare un esame di coscienza e prepararsi alla confessione con serenità e fiducia nella misericordia di Dio.">
 <meta name="twitter:image" content="https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/social-preview.png">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon-192.png">
@@ -29,11 +29,23 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Uno sguardo dentro di me",
-  "description": "Una semplice app gratuita che aiuta a fare un esame di coscienza personale con serenità e fiducia nella misericordia di Dio.",
+  "description": "App gratuita per prepararsi alla confessione e fare un esame di coscienza personale con serenità e fiducia nella misericordia di Dio.",
   "applicationCategory": "LifestyleApplication",
+  "applicationSubCategory": "ReligiousApp",
   "operatingSystem": "Any",
   "inLanguage": "it",
-  "url": "https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/"
+  "browserRequirements": "Requires JavaScript",
+  "url": "https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/",
+  "image": "https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/social-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Paolo Rosso"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  }
 }
 </script>
 <style>
@@ -267,11 +279,17 @@
 
   <div style="margin:22px 0 10px; border-top:1px solid #dde7df;"></div>
 
-  <label class="section-title" style="display:block; margin-top:26px; margin-bottom:10px;">Scegli l'orientamento dell'esame di coscienza</label>
+  <label class="section-title" style="display:block; margin-top:26px; margin-bottom:10px;">
+Scegli il percorso dell'esame di coscienza fra ADULTI e GIOVANI
+</label>
   <select id="mode">
     <option value="adulti">Adulti</option>
     <option value="giovani">Giovani</option>
   </select>
+
+  <p class="small">
+    Scegli il percorso più adatto: uno pensato per <strong>adulti</strong> oppure uno pensato per <strong>giovani</strong>.
+  </p>
 
   <p class="small">
     Le domande che seguono si ispirano alla tradizione dell’esame di coscienza cristiano,
@@ -279,6 +297,8 @@
   </p>
 
   <button class="primary" onclick="start()">Inizia</button>
+
+  <button class="secondary" onclick="condividiApp()">Condividi questa app</button>
 
   <div class="row">
     <button class="secondary" onclick="loadSaved()">Apri testo salvato</button>
