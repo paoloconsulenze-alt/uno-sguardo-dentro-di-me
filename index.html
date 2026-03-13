@@ -228,20 +228,24 @@
   <p class="lead">Fermati un momento. Guarda con sincerità la tua vita.</p>
 
   <div class="prayer">
-    Signore, aiutami a guardare dentro di me con verità<br>
-    e a riconoscere ciò che mi allontana da te.
+    “Il Signore non si stanca mai di accoglierci.<br>
+    Quando facciamo un passo verso di Lui,<br>
+    scopriamo che Lui ci stava già aspettando.”<br>
+    <span class="small">— Papa Francesco</span>
   </div>
 
-  <div class="prayer" style="margin-top:12px; background:#f3f8f4;">
-    “Rientrato in sé, disse: mi alzerò e andrò da mio padre.”<br>
-    <span class="small">(Lc 15,17-18)</span>
-  </div>
+  <div style="margin:18px 0 10px; border-top:1px solid #dde7df;"></div>
 
-  <label class="section-title">Scegli l'orientamento dell'esame di coscienza</label>
+  <label class="section-title" style="display:block; margin-top:22px; margin-bottom:8px;">Scegli l'orientamento dell'esame di coscienza</label>
   <select id="mode">
     <option value="adulti">Adulti</option>
     <option value="giovani">Giovani</option>
   </select>
+
+  <p class="small">
+    Le domande che seguono si ispirano alla tradizione dell’esame di coscienza cristiano,
+    che trova nei Dieci Comandamenti e nel comandamento dell’amore il suo orientamento fondamentale.
+  </p>
 
   <button class="primary" onclick="start()">Inizia</button>
 
@@ -274,6 +278,15 @@
   <p class="small">Puoi scrivere un proposito concreto, semplice e possibile. È facoltativo.</p>
 
   <input id="proposito" placeholder="Es. pregherò qualche minuto ogni giorno; cercherò più pazienza; sarò più sincero..." />
+
+  <div class="prayer" style="margin-top:18px; background:#edf7f0; border:1px solid #cfe3d6; padding:18px;">
+    <div style="font-style:normal; font-weight:bold; color:#4f6b59; margin-bottom:8px;">Ricorda:</div>
+    <div style="font-size:17px; line-height:1.6;">
+      “Dio non si stanca mai di perdonare: siamo noi che ci stanchiamo di chiedere misericordia.
+      Ma Lui non si stanca mai e ci aiuta sempre a ricominciare.”
+    </div>
+    <div class="small" style="margin-top:10px;">— Papa Francesco</div>
+  </div>
 
   <div class="row">
     <button class="primary" onclick="generateConfessionText()">Genera testo per la confessione</button>
@@ -328,8 +341,6 @@
     Donami la forza di ricominciare<br>
     e di camminare nella tua misericordia.
   </div>
-
-  <p>La misericordia permette sempre di ricominciare.</p>
 
   <button class="secondary" onclick="restart()">Nuovo esame</button>
 </div>
@@ -576,7 +587,6 @@
       text += "\n\nProposito concreto: " + prop;
     }
 
-    
     const gestureMap = {
       "Rapporto con Dio": "dedica oggi qualche minuto di silenzio e recita lentamente il Padre nostro.",
       "Messa e vita sacramentale": "rileggi con calma un breve passo del Vangelo e fermati su una frase.",
@@ -616,7 +626,6 @@
     }
 
     text += "\n\nInvito concreto: " + gesture;
-
 
     document.getElementById("finalText").textContent = text;
     show("screen4");
