@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Uno sguardo dentro di me – Presentazione</title>
+<meta name="description" content="Pagina di presentazione di Uno sguardo dentro di me, una semplice app gratuita per l’esame di coscienza personale.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/presentazione.html">
+<meta property="og:title" content="Uno sguardo dentro di me – Presentazione">
+<meta property="og:description" content="Una semplice app gratuita per l’esame di coscienza personale con serenità e fiducia nella misericordia di Dio.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/presentazione.html">
+<meta property="og:image" content="https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root{
     --bg:#f4f8f5; --card:#ffffff; --text:#233028; --muted:#607067;
@@ -11,158 +20,114 @@
     --shadow:0 12px 30px rgba(0,0,0,0.08); --radius:24px;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(180deg,#f8fbf9 0%, var(--bg) 100%);color:var(--text);line-height:1.55}
-  .wrap{max-width:1020px;margin:auto;padding:24px 18px 56px}
-  .hero,.section{background:var(--card);border-radius:28px;padding:24px;box-shadow:var(--shadow);border:1px solid rgba(221,231,223,.8)}
-  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:24px;align-items:center}
-  .app-head{display:flex;align-items:center;gap:16px;margin-bottom:12px}
-  .icon{width:84px;height:84px;border-radius:22px;background:linear-gradient(180deg,#74c08f 0%, #5bad7a 100%);position:relative;box-shadow:0 12px 22px rgba(103,181,133,.28);flex:0 0 auto}
-  .icon:before{content:"";position:absolute;left:16px;right:16px;top:30px;bottom:30px;border:4px solid white;border-radius:999px}
-  .icon:after{content:"";position:absolute;width:16px;height:16px;border-radius:50%;background:white;left:50%;top:50%;transform:translate(-50%,-50%)}
-  h1{margin:0 0 6px;font-size:36px;line-height:1.08}
-  .subtitle{margin:0;color:var(--muted);font-size:18px}
-  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 12px}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#f8fbf9 0%, var(--bg) 100%);color:var(--text);line-height:1.6}
+  .wrap{max-width:1100px;margin:auto;padding:24px 18px 60px}
+  .hero{background:var(--card);border-radius:32px;padding:28px 22px;box-shadow:var(--shadow);border:1px solid rgba(221,231,223,.8)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
+  h1{margin:0 0 10px;font-size:42px;line-height:1.08}
+  .subtitle{margin:0;color:var(--muted);font-size:20px}
+  .lead{font-size:18px;color:#37463d;margin:18px 0 14px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 14px}
   .badge{background:var(--soft);color:#395041;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:13px}
-  .lead{font-size:18px;color:#37463d;margin:0 0 12px}
-  p{margin:0;color:#44544b}
-  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-  .btn{display:inline-block;text-decoration:none;border-radius:14px;padding:13px 18px;font-weight:bold;font-size:15px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+  .btn{display:inline-block;text-decoration:none;border-radius:14px;padding:14px 18px;font-weight:bold;font-size:16px}
   .btn-primary{background:linear-gradient(180deg,var(--green) 0%, var(--green-dark) 100%);color:#fff;box-shadow:0 10px 18px rgba(103,181,133,.22)}
   .btn-secondary{background:#f3f7f4;color:#2f4036;border:1px solid var(--line)}
-  .phone{background:linear-gradient(180deg,#213128 0%, #30453a 100%);border-radius:34px;padding:14px;width:min(100%,320px);margin:0 auto;box-shadow:0 18px 34px rgba(0,0,0,.18)}
-  .screen{background:#f7fbf8;border-radius:24px;padding:18px 16px;min-height:460px;text-align:left}
-  .status{text-align:center;font-size:12px;color:#5b6b62;margin-bottom:10px}
-  .mini-title{text-align:center;font-weight:bold;font-size:20px;margin:6px 0 12px}
-  .mini-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 6px 14px rgba(0,0,0,.04)}
-  .mini-tag{display:inline-block;font-size:11px;padding:5px 8px;border-radius:999px;background:#f4f8f5;border:1px solid var(--line);color:#526158;margin-bottom:10px}
-  .mini-question{font-size:17px;line-height:1.35;margin:0 0 12px;color:#243028}
-  .mini-btn{display:block;width:100%;border-radius:14px;padding:11px 12px;margin-top:10px;font-size:14px;font-weight:bold;border:1px solid transparent}
-  .mini-btn.pos{background:#edf7f0;color:#284032;border-color:#d4e8da}
-  .mini-btn.neg{background:#fff2f2;color:#5a3030;border-color:#efd2d2}
+  .preview{width:100%;border-radius:26px;display:block;box-shadow:0 18px 34px rgba(0,0,0,.12);border:1px solid rgba(221,231,223,.8)}
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:24px}
-  .section h2{margin:0 0 10px;font-size:25px}
-  .feature-list{display:grid;gap:12px;margin-top:16px}
-  .feature{background:#f9fbfa;border:1px solid var(--line);border-radius:18px;padding:15px}
+  .section{background:#fff;border-radius:24px;padding:24px;box-shadow:0 6px 18px rgba(0,0,0,.05);border:1px solid rgba(221,231,223,.8)}
+  .section h2{margin:0 0 12px;font-size:26px}
+  .feature-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+  .feature{background:#f9fbfa;border:1px solid var(--line);border-radius:18px;padding:16px}
   .feature strong{display:block;margin-bottom:6px;font-size:16px}
   .feature span{color:#55655c;font-size:14px}
+  .quote{margin-top:16px;background:#f7fbf8;border:1px solid var(--line);border-radius:18px;padding:16px;font-style:italic;color:#516159}
   .footer{text-align:center;color:#66756c;font-size:14px;margin-top:22px}
-  @media(max-width:860px){.hero-grid,.grid{grid-template-columns:1fr}h1{font-size:31px}.subtitle{font-size:17px}}
+  @media(max-width:860px){.hero-grid,.grid,.feature-list{grid-template-columns:1fr}h1{font-size:34px}.subtitle{font-size:18px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-
-  <div class="hero">
+  <section class="hero">
     <div class="hero-grid">
       <div>
-        <div class="app-head">
-          <div class="icon"></div>
-          <div>
-            <h1>Uno sguardo dentro di me</h1>
-            <p class="subtitle">Un piccolo aiuto per prepararsi alla confessione</p>
-          </div>
-        </div>
+        <h1>Uno sguardo dentro di me</h1>
+        <p class="subtitle">Una semplice app gratuita per l’esame di coscienza personale</p>
 
         <div class="badge-row">
-          <span class="badge">Percorso giovani e adulti</span>
-          <span class="badge">Testo finale pronto</span>
-          <span class="badge">Proposito concreto</span>
+          <span class="badge">Percorso giovani</span>
+          <span class="badge">Percorso adulti</span>
+          <span class="badge">Salvataggio locale</span>
+          <span class="badge">Condivisione semplice</span>
         </div>
 
-        <p class="lead">
-          Un'app semplice per fermarsi, rileggere la propria vita e arrivare alla confessione con maggiore chiarezza.
-        </p>
+        <p class="lead"><strong>Uno sguardo dentro di me</strong> è il nome di una piccola app web pensata per accompagnare l’esame di coscienza con uno stile sobrio, accessibile e orientato alla misericordia.</p>
 
         <p>
-          Non sostituisce il sacramento: offre soltanto un aiuto discreto, essenziale e personale.
+          Non sostituisce la confessione e non pretende di farlo. Offre un aiuto discreto per fermarsi,
+          rileggere la propria vita con sincerità e arrivare al sacramento della riconciliazione con maggiore chiarezza interiore.
         </p>
 
+        <div class="quote">
+          “La misericordia di Dio è la nostra liberazione e la nostra felicità.”<br>
+          <span style="font-style:normal; font-size:13px;">— Papa Francesco</span>
+        </div>
+
         <div class="actions">
-          <a class="btn btn-primary" href="./index.html">Apri l'app</a>
-          <a class="btn btn-secondary" href="#scopri">Scopri di più</a>
+          <a class="btn btn-primary" href="./index.html">Apri l’app</a>
+          <a class="btn btn-secondary" href="#come-funziona">Scopri come funziona</a>
         </div>
       </div>
 
       <div>
-        <div class="phone">
-          <div class="screen">
-            <div class="status">Uno sguardo dentro di me</div>
-            <div class="mini-title">Domanda 4 di 12</div>
-
-            <div class="mini-card">
-              <span class="mini-tag">Adulti</span>
-              <p class="mini-question">
-                Nel parlare degli altri ho custodito rispetto, verità e carità?
-              </p>
-              <div class="mini-btn pos">✓ Ho parlato con rispetto</div>
-              <div class="mini-btn neg">✗ Ho ceduto a giudizi e mormorazioni</div>
-            </div>
-          </div>
-        </div>
+        <img class="preview" src="./social-preview.png" alt="Anteprima di Uno sguardo dentro di me">
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="grid" id="scopri">
-    <div class="section">
+  <div class="grid" id="come-funziona">
+    <section class="section">
+      <h2>Cos’è l’app</h2>
+      <p>
+        L’app propone un breve percorso guidato con domande essenziali, un passaggio finale sul proposito concreto
+        e un testo utile per prepararsi alla confessione. Tutto resta sul dispositivo della persona.
+      </p>
+      <div class="feature-list">
+        <div class="feature"><strong>Nome chiaro</strong><span>Google e i visitatori riconoscono subito “Uno sguardo dentro di me” come nome dell’app.</span></div>
+        <div class="feature"><strong>Uso immediato</strong><span>Si apre da telefono o computer senza installazioni complesse.</span></div>
+        <div class="feature"><strong>Tono sobrio</strong><span>Meno moralismo, più verità personale e fiducia nella misericordia di Dio.</span></div>
+        <div class="feature"><strong>Condivisione facile</strong><span>Il link può essere inviato con semplicità nei gruppi e nelle parrocchie.</span></div>
+      </div>
+    </section>
+
+    <section class="section">
       <h2>Come funziona</h2>
       <p>
-        L'app propone 12 domande essenziali. A ogni passaggio si sceglie tra una risposta positiva e una difficoltà reale da riconoscere.
-        Alla fine viene generato un testo sintetico da portare in confessione.
+        Dopo una schermata iniziale essenziale, la persona sceglie l’orientamento del percorso, risponde alle domande,
+        formula un piccolo proposito e può ottenere un testo da rileggere, copiare o salvare.
       </p>
-
       <div class="feature-list">
-        <div class="feature">
-          <strong>Due percorsi</strong>
-          <span>Uno per giovani e uno per adulti, con linguaggio vicino alla vita concreta.</span>
-        </div>
-        <div class="feature">
-          <strong>Domande chiare</strong>
-          <span>Scelte semplici, senza passaggi complicati o formule astratte.</span>
-        </div>
-        <div class="feature">
-          <strong>Risultato immediato</strong>
-          <span>Il testo finale può essere corretto, copiato, salvato o stampato.</span>
-        </div>
+        <div class="feature"><strong>Domande guidate</strong><span>Un linguaggio concreto aiuta a riconoscere il bene e il peccato senza confusione.</span></div>
+        <div class="feature"><strong>Proposito finale</strong><span>Una breve citazione di Papa Francesco collega il cambiamento alla misericordia.</span></div>
+        <div class="feature"><strong>Salvataggio locale</strong><span>Le informazioni restano sul dispositivo e non vengono inviate altrove.</span></div>
+        <div class="feature"><strong>Quasi una app</strong><span>Dal telefono si può aggiungere alla schermata iniziale come una piccola app personale.</span></div>
       </div>
-    </div>
-
-    <div class="section">
-      <h2>Perché può essere utile</h2>
-      <p>
-        Molte persone oggi fanno fatica a confessarsi per imbarazzo, confusione o mancanza di abitudine.
-        Questa app prova ad aprire uno spazio semplice di verità davanti a Dio.
-      </p>
-
-      <div class="feature-list">
-        <div class="feature">
-          <strong>Semplicità</strong>
-          <span>Un percorso breve, leggibile e adatto anche allo smartphone.</span>
-        </div>
-        <div class="feature">
-          <strong>Discrezione</strong>
-          <span>I contenuti restano sul dispositivo e non sostituiscono il dialogo con il sacerdote.</span>
-        </div>
-        <div class="feature">
-          <strong>Taglio pastorale</strong>
-          <span>Uno strumento sobrio, pensato per accompagnare e non per appesantire.</span>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
 
-  <div class="section" style="margin-top:24px;">
-    <h2>Una tecnologia al servizio della vita spirituale</h2>
+  <section class="section" style="margin-top:24px;">
+    <h2>Perché può essere utile</h2>
     <p>
-      Se usata con equilibrio, anche una piccola applicazione può diventare un aiuto concreto per vivere con più consapevolezza il sacramento della riconciliazione.
+      Molte persone fanno fatica a confessarsi per imbarazzo, confusione o scarsa abitudine all’esame di coscienza.
+      Questa pagina e questa app vogliono offrire un aiuto umile, concreto e rispettoso della libertà personale.
     </p>
     <div class="actions" style="margin-top:18px;">
-      <a class="btn btn-primary" href="./index.html">Prova l'app</a>
+      <a class="btn btn-primary" href="./index.html">Prova l’app</a>
     </div>
-  </div>
+  </section>
 
   <div class="footer">
-    Pagina di presentazione dell'app “Uno sguardo dentro di me”
+    Pagina di presentazione dell’app “Uno sguardo dentro di me”
   </div>
 </div>
 </body>
