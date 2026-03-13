@@ -1,14 +1,20 @@
 {
   "name": "Uno sguardo dentro di me",
-  "short_name": "Uno sguardo",
-  "start_url": "./",
+  "short_name": "Sguardo",
+  "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fafafa",
+  "background_color": "#f4f8f5",
   "theme_color": "#6bbf8a",
-  "description": "Esame di coscienza guidato (offline) con promemoria sobrio.",
-  "lang": "it-IT",
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ]
 }
