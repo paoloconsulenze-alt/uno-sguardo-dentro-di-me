@@ -3,13 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uno sguardo dentro di me</title>
+<title>Uno sguardo dentro di me – App per l'esame di coscienza</title>
+<meta name="description" content="Uno sguardo dentro di me è una semplice app gratuita che accompagna l'esame di coscienza personale con sobrietà, sincerità e misericordia.">
+<meta name="keywords" content="Uno sguardo dentro di me, esame di coscienza, confessione, misericordia, app cristiana">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Uno sguardo dentro di me – App per l'esame di coscienza">
+<meta property="og:description" content="Una semplice app gratuita per l'esame di coscienza personale, con uno stile sobrio e orientato alla misericordia.">
 <link rel="manifest" href="./manifest.webmanifest">
 <meta name="theme-color" content="#6bbf8a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Uno sguardo">
 <link rel="apple-touch-icon" href="./icon-192.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Uno sguardo dentro di me",
+  "description": "Una semplice app gratuita che accompagna l'esame di coscienza personale con sobrietà, sincerità e misericordia.",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Any",
+  "inLanguage": "it"
+}
+</script>
 <style>
   :root{
     --bg:#f4f8f5;
@@ -74,6 +91,7 @@
   h2{font-size:23px; margin:0 0 8px}
   p{font-size:16px; margin:10px 0}
   .lead{font-size:17px; color:#3d4c43}
+  .intro-name{font-size:16px; color:#45554c; max-width:420px; margin:0 auto 12px; line-height:1.5;}
   .prayer{
     font-style:italic;
     color:#55635a;
@@ -218,6 +236,16 @@
     font-weight:bold;
   }
   .footer-actions{margin-top:16px}
+  #screen1 h1{font-size:28px; letter-spacing:-0.02em; margin-bottom:10px}
+  #screen1 .intro-name{
+    background:#f8fbf9;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px 16px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.8);
+    margin:0 auto 14px;
+  }
+  #screen1 .section-title{text-align:center; letter-spacing:.03em}
 </style>
 </head>
 <body>
@@ -225,8 +253,7 @@
 <div class="card" id="screen1">
   <div class="logo"></div>
   <h1>Uno sguardo dentro di me</h1>
-  <p class="lead">Fermati un momento. Guarda con sincerità la tua vita.</p>
-
+  <p class="intro-name"><strong>Uno sguardo dentro di me</strong> è una piccola applicazione web gratuita che aiuta a fare un esame di coscienza personale con semplicità e sincerità.</p>
   <div class="prayer">
     “Il Signore non si stanca mai di accoglierci.<br>
     Quando facciamo un passo verso di Lui,<br>
@@ -236,15 +263,14 @@
 
   <div style="margin:18px 0 10px; border-top:1px solid #dde7df;"></div>
 
-  <label class="section-title" style="display:block; margin-top:22px; margin-bottom:8px;">Scegli l'orientamento dell'esame di coscienza</label>
+  <label class="section-title" style="display:block; margin-top:22px; margin-bottom:8px;">Scegli l’orientamento dell’esame di coscienza</label>
   <select id="mode">
     <option value="adulti">Adulti</option>
     <option value="giovani">Giovani</option>
   </select>
 
   <p class="small">
-    Le domande che seguono si ispirano alla tradizione dell’esame di coscienza cristiano,
-    che trova nei Dieci Comandamenti e nel comandamento dell’amore il suo orientamento fondamentale.
+    Le domande si ispirano alla tradizione dell’esame di coscienza cristiano, alla luce dei Dieci Comandamenti e del comandamento dell’amore.
   </p>
 
   <button class="primary" onclick="start()">Inizia</button>
