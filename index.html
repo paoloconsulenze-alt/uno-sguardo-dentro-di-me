@@ -383,6 +383,7 @@
 
   <button id="positiveBtn" class="answer answer-positive" onclick="answerCurrent(false)"></button>
   <button id="negativeBtn" class="answer answer-negative" onclick="answerCurrent(true)"></button>
+  <button id="previousBtn" class="secondary hidden" onclick="previousQuestion()">Domanda precedente</button>
 </div>
 
 <div class="card hidden" id="screen3">
@@ -469,7 +470,7 @@
   let step = 0;
   let mode = "adulti";
   let questions = [];
-  let negatives = [];
+  let answers = [];
 
   const STORAGE_KEY = "sguardo_confessione_v8";
 
@@ -661,7 +662,7 @@
 
   function start(){
     step = 0;
-    negatives = [];
+    answers = [];
     document.getElementById("proposito").value = "";
     mode = document.getElementById("mode").value || "adulti";
     questions = questionSets[mode] || questionSets.adulti;
@@ -677,11 +678,19 @@
     document.getElementById("question").innerText = q.prompt;
     document.getElementById("positiveBtn").innerHTML = `<span class="label">Scelta positiva</span>${q.positive}`;
     document.getElementById("negativeBtn").innerHTML = `<span class="label">Da portare in confessione</span>${q.negative}`;
+
+    const previousBtn = document.getElementById("previousBtn");
+    if(previousBtn){
+      if(step > 0){
+        previousBtn.classList.remove("hidden");
+      } else {
+        previousBtn.classList.add("hidden");
+      }
+    }
   }
 
   function answerCurrent(isNegative){
-    const q = questions[step];
-    if (isNegative) negatives.push({confession:q.confession, area:q.area});
+    answers[step] = isNegative;
 
     const screen2 = document.getElementById("screen2");
     screen2.style.opacity = "0.35";
@@ -701,11 +710,22 @@
     }, 650);
   }
 
+  function previousQuestion(){
+    if(step > 0){
+      step--;
+      showQuestion();
+    }
+  }
+
   function skipProposito(){
     generateConfessionText();
   }
 
   function generateConfessionText(){
+    const negatives = questions
+      .map((q, i) => answers[i] ? {confession:q.confession, area:q.area} : null)
+      .filter(Boolean);
+
     let text = "Padre, chiedo perdono per ";
     if (negatives.length === 0) {
       text += "la poca chiarezza nel riconoscere i miei limiti e per tutto ciò che porto nel cuore. Mi affido alla misericordia di Dio.";
