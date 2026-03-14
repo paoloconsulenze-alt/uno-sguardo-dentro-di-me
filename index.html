@@ -258,7 +258,71 @@
     text-align:left;
     font-weight:bold;
   }
+
   .footer-actions{margin-top:16px}
+
+  @media print {
+    body {
+      background:#fff;
+      padding:0;
+      margin:0;
+    }
+
+    body * {
+      visibility: hidden !important;
+    }
+
+    #screen4,
+    #screen4 * {
+      visibility: visible !important;
+    }
+
+    #screen4 {
+      display:block !important;
+      position:absolute;
+      inset:0;
+      width:100%;
+      max-width:none;
+      margin:0;
+      padding:24mm 18mm;
+      background:#fff;
+      box-shadow:none;
+      border:none;
+      border-radius:0;
+      text-align:left;
+    }
+
+    #screen4 h1 {
+      display:block !important;
+      font-size:20pt;
+      margin:0 0 12pt;
+      color:#000;
+      text-align:left;
+    }
+
+    #screen4 .small,
+    #screen4 .row,
+    #screen4 .footer-actions {
+      display:none !important;
+    }
+
+    #finalText {
+      visibility: visible !important;
+      display:block !important;
+      width:100%;
+      margin:0;
+      padding:0;
+      background:#fff;
+      border:none;
+      border-radius:0;
+      box-shadow:none;
+      color:#000;
+      font-family: Arial, sans-serif;
+      font-size:13pt;
+      line-height:1.6;
+      white-space:pre-wrap;
+    }
+  }
 </style>
 </head>
 <body>
@@ -279,15 +343,12 @@
 
   <div style="margin:22px 0 10px; border-top:1px solid #dde7df;"></div>
 
-  <label class="section-title" style="display:block; margin-top:26px; margin-bottom:10px;">
-Scegli il percorso dell'esame di coscienza fra ADULTI e GIOVANI
-</label>
   <select id="mode">
     <option value="adulti">Adulti</option>
     <option value="giovani">Giovani</option>
   </select>
 
-  <p class="small">
+  <p class="small" style="margin-top:12px;">
     Scegli il percorso più adatto: uno pensato per <strong>adulti</strong> oppure uno pensato per <strong>giovani</strong>.
   </p>
 
@@ -301,8 +362,8 @@ Scegli il percorso dell'esame di coscienza fra ADULTI e GIOVANI
   <button class="secondary" onclick="condividiApp()">Condividi questa app</button>
 
   <div class="row">
-    <button class="secondary" onclick="loadSaved()">Apri testo salvato</button>
-    <button class="secondary" onclick="clearSaved()">Cancella testo salvato</button>
+    <button class="secondary" onclick="loadSaved()">Apri promemoria salvato</button>
+    <button class="secondary" onclick="clearSaved()">Cancella promemoria salvato</button>
   </div>
 
   <p class="muted" style="margin-top:18px">
@@ -340,13 +401,13 @@ Scegli il percorso dell'esame di coscienza fra ADULTI e GIOVANI
   </div>
 
   <div class="row">
-    <button class="primary" onclick="generateConfessionText()">Genera testo per la confessione</button>
+    <button class="primary" onclick="generateConfessionText()">Genera promemoria per la confessione</button>
     <button class="secondary" onclick="skipProposito()">Salta</button>
   </div>
 </div>
 
 <div class="card hidden" id="screen4">
-  <h1>Testo per la confessione</h1>
+  <h1>Promemoria per la confessione</h1>
   <p class="small">Puoi leggerlo così com'è, oppure modificarlo.</p>
 
   <div class="box" id="finalText"></div>
@@ -368,8 +429,8 @@ Scegli il percorso dell'esame di coscienza fra ADULTI e GIOVANI
 </div>
 
 <div class="card hidden" id="screen4edit">
-  <h1>Modifica il testo</h1>
-  <p class="small">Puoi correggere, accorciare o personalizzare il testo prima di salvarlo.</p>
+  <h1>Modifica il promemoria</h1>
+  <p class="small">Puoi correggere, accorciare o personalizzare il promemoria prima di salvarlo.</p>
 
   <textarea id="editText"></textarea>
 
@@ -621,12 +682,23 @@ Scegli il percorso dell'esame di coscienza fra ADULTI e GIOVANI
   function answerCurrent(isNegative){
     const q = questions[step];
     if (isNegative) negatives.push({confession:q.confession, area:q.area});
-    step++;
-    if(step < questions.length){
-      showQuestion();
-    } else {
-      show("screen3");
-    }
+
+    const screen2 = document.getElementById("screen2");
+    screen2.style.opacity = "0.35";
+    screen2.style.pointerEvents = "none";
+
+    setTimeout(() => {
+      step++;
+      if(step < questions.length){
+        showQuestion();
+        screen2.style.opacity = "1";
+        screen2.style.pointerEvents = "auto";
+      } else {
+        screen2.style.opacity = "1";
+        screen2.style.pointerEvents = "auto";
+        show("screen3");
+      }
+    }, 650);
   }
 
   function skipProposito(){
@@ -718,7 +790,7 @@ Scegli il percorso dell'esame di coscienza fra ADULTI e GIOVANI
           : document.getElementById("editText").value
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-      alert("Testo salvato sul dispositivo.");
+      alert("Promemoria salvato sul dispositivo.");
     } catch(e){
       alert("Impossibile salvare (memoria piena o limitazioni del browser).");
     }
@@ -727,19 +799,19 @@ Scegli il percorso dell'esame di coscienza fra ADULTI e GIOVANI
   function loadSaved(){
     try{
       const raw = localStorage.getItem(STORAGE_KEY);
-      if(!raw){ alert("Nessun testo salvato."); return; }
+      if(!raw){ alert("Nessun promemoria salvato."); return; }
       const payload = JSON.parse(raw);
       document.getElementById("finalText").textContent = payload.text || "";
       show("screen4");
     } catch(e){
-      alert("Non riesco a leggere il testo salvato.");
+      alert("Non riesco a leggere il promemoria salvato.");
     }
   }
 
   function clearSaved(){
-    if(!confirm("Cancellare il testo salvato dal dispositivo?")) return;
+    if(!confirm("Cancellare il promemoria salvato dal dispositivo?")) return;
     localStorage.removeItem(STORAGE_KEY);
-    alert("Testo salvato cancellato.");
+    alert("Promemoria salvato cancellato.");
   }
 
   function exportTxt(){
@@ -751,7 +823,7 @@ Scegli il percorso dell'esame di coscienza fra ADULTI e GIOVANI
     const a = document.createElement("a");
     const today = new Date().toLocaleDateString('it-IT').replaceAll("/","-");
     a.href = url;
-    a.download = `testo_confessione_${today}.txt`;
+    a.download = `promemoria_confessione_${today}.txt`;
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -761,7 +833,7 @@ Scegli il percorso dell'esame di coscienza fra ADULTI e GIOVANI
   function copyText(){
     const text = document.getElementById("finalText").textContent || "";
     navigator.clipboard.writeText(text).then(()=>{
-      alert("Testo copiato.");
+      alert("Promemoria copiato.");
     }).catch(()=>{
       alert("Copia non disponibile: prova a selezionare e copiare manualmente.");
     });
