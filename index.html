@@ -58,6 +58,8 @@
     --green:#68b786;
     --green-dark:#4f9b6d;
     --green-soft:#edf7f0;
+    --blue:#7aaee6;
+    --blue-dark:#5f93cf;
     --red:#cb6e6e;
     --red-dark:#b25a5a;
     --red-soft:#fff3f3;
@@ -166,6 +168,12 @@
     border:1px solid #dbe6dd;
   }
   .secondary:hover{background:#e8f0ea}
+  .youth{
+    background:linear-gradient(180deg,var(--blue) 0%, var(--blue-dark) 100%);
+    color:white;
+    box-shadow:0 8px 18px rgba(122,174,230,0.24);
+  }
+  .youth:hover{filter:brightness(0.98)}
   .answer{
     text-align:left;
     min-height:82px;
@@ -343,21 +351,20 @@
 
   <div style="margin:22px 0 10px; border-top:1px solid #dde7df;"></div>
 
-  <select id="mode">
-    <option value="adulti">Adulti</option>
-    <option value="giovani">Giovani</option>
-  </select>
-
-  <p class="small" style="margin-top:12px;">
+  <p class="section-title" style="margin-top:26px; margin-bottom:14px; text-align:center;">
     Scegli il percorso più adatto: uno pensato per <strong>adulti</strong> oppure uno pensato per <strong>giovani</strong>.
   </p>
+
+  <div class="row">
+    <button class="primary" onclick="startMode('adulti')">Percorso ADULTI</button>
+    <button class="youth" onclick="startMode('giovani')">Percorso GIOVANI</button>
+  </div>
 
   <p class="small">
     Le domande che seguono si ispirano alla tradizione dell’esame di coscienza cristiano,
     che trova nei Dieci Comandamenti e nel comandamento dell’amore il suo orientamento fondamentale.
   </p>
 
-  <button class="primary" onclick="start()">Inizia</button>
 
   <button class="secondary" onclick="condividiApp()">Condividi questa app</button>
 
@@ -388,6 +395,8 @@
 
 <div class="card hidden" id="screen3">
   <h1>Un piccolo passo per ricominciare</h1>
+  <p class="small"><strong>Ecco un invito concreto di conversione:</strong></p>
+  <div id="invitoConversione" class="prayer" style="margin-top:14px;"></div>
   <p class="small">Puoi scrivere un proposito concreto, semplice e possibile. È facoltativo.</p>
 
   <input id="proposito" placeholder="Es. pregherò qualche minuto ogni giorno; cercherò più pazienza; sarò più sincero..." />
@@ -660,11 +669,11 @@
     el.classList.add("fade-in");
   }
 
-  function start(){
+  function startMode(selectedMode){
     step = 0;
     answers = [];
     document.getElementById("proposito").value = "";
-    mode = document.getElementById("mode").value || "adulti";
+    mode = selectedMode || "adulti";
     questions = questionSets[mode] || questionSets.adulti;
     show("screen2");
     showQuestion();
@@ -705,6 +714,7 @@
       } else {
         screen2.style.opacity = "1";
         screen2.style.pointerEvents = "auto";
+        updateConcreteInvitation();
         show("screen3");
       }
     }, 650);
@@ -721,27 +731,7 @@
     generateConfessionText();
   }
 
-  function generateConfessionText(){
-    const negatives = questions
-      .map((q, i) => answers[i] ? {confession:q.confession, area:q.area} : null)
-      .filter(Boolean);
-
-    let text = "Padre, chiedo perdono per ";
-    if (negatives.length === 0) {
-      text += "la poca chiarezza nel riconoscere i miei limiti e per tutto ciò che porto nel cuore. Mi affido alla misericordia di Dio.";
-    } else if (negatives.length === 1) {
-      text += negatives[0].confession + ". Desidero affidare tutto questo alla misericordia di Dio.";
-    } else if (negatives.length === 2) {
-      text += negatives[0].confession + " e per " + negatives[1].confession + ". Desidero affidare tutto questo alla misericordia di Dio.";
-    } else {
-      text += negatives.slice(0, -1).map(n=>n.confession).join(", per ") + ", e per " + negatives[negatives.length - 1].confession + ". Desidero affidare tutto questo alla misericordia di Dio.";
-    }
-
-    const prop = document.getElementById("proposito").value.trim();
-    if (prop) {
-      text += "\n\nProposito concreto: " + prop;
-    }
-
+  function getConcreteInvitation(negatives){
     const gestureMap = {
       "Rapporto con Dio": "dedica oggi qualche minuto di silenzio e recita lentamente il Padre nostro.",
       "Messa e vita sacramentale": "rileggi con calma un breve passo del Vangelo e fermati su una frase.",
@@ -768,19 +758,42 @@
       "Bene possibile": "compi oggi un piccolo gesto gratuito di aiuto."
     };
 
-    let gesture = null;
     for (let n of negatives){
       if (gestureMap[n.area]){
-        gesture = gestureMap[n.area];
-        break;
+        return gestureMap[n.area];
       }
     }
 
-    if (!gesture){
-      gesture = "prenditi oggi qualche minuto di silenzio e recita con calma un Padre nostro.";
+    return "prenditi oggi qualche minuto di silenzio e recita con calma un Padre nostro.";
+  }
+
+  function updateConcreteInvitation(){
+    const negatives = questions
+      .map((q, i) => answers[i] ? {confession:q.confession, area:q.area} : null)
+      .filter(Boolean);
+    document.getElementById("invitoConversione").textContent = getConcreteInvitation(negatives);
+  }
+
+  function generateConfessionText(){
+    const negatives = questions
+      .map((q, i) => answers[i] ? {confession:q.confession, area:q.area} : null)
+      .filter(Boolean);
+
+    let text = "Padre, chiedo perdono per ";
+    if (negatives.length === 0) {
+      text += "la poca chiarezza nel riconoscere i miei limiti e per tutto ciò che porto nel cuore. Mi affido alla misericordia di Dio.";
+    } else if (negatives.length === 1) {
+      text += negatives[0].confession + ". Desidero affidare tutto questo alla misericordia di Dio.";
+    } else if (negatives.length === 2) {
+      text += negatives[0].confession + " e per " + negatives[1].confession + ". Desidero affidare tutto questo alla misericordia di Dio.";
+    } else {
+      text += negatives.slice(0, -1).map(n=>n.confession).join(", per ") + ", e per " + negatives[negatives.length - 1].confession + ". Desidero affidare tutto questo alla misericordia di Dio.";
     }
 
-    text += "\n\nInvito concreto: " + gesture;
+    const prop = document.getElementById("proposito").value.trim();
+    if (prop) {
+      text += "\n\nProposito concreto: " + prop;
+    }
 
     document.getElementById("finalText").textContent = text;
     show("screen4");
