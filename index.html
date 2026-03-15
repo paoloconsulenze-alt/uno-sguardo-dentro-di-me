@@ -148,8 +148,8 @@
   button{
     border:none;
     padding:16px 16px;
-    margin-top:12px;
-    font-size:16px;
+    margin-top:16px;
+    font-size:17px;
     border-radius:16px;
     width:100%;
     cursor:pointer;
@@ -337,7 +337,8 @@
 
 <div class="card fade-in" id="screen1">
   <div class="logo"></div>
-  <h1>Uno sguardo dentro di me</h1>
+  <h1>👁️‍🗨️ Uno sguardo dentro di me</h1>
+  <div style="width:60px; height:2px; background:#dde7df; margin:12px auto 18px auto; border-radius:2px;"></div>
   <p class="lead"><strong>Uno sguardo dentro di me</strong> è una piccola app gratuita che aiuta a fare un esame di coscienza personale con semplicità e sincerità.</p>
 
   <div id="installHint" class="install-hint hidden">
@@ -351,13 +352,13 @@
 
   <div style="margin:22px 0 10px; border-top:1px solid #dde7df;"></div>
 
-  <p class="section-title" style="margin-top:26px; margin-bottom:14px; text-align:center;">
-    Scegli il percorso più adatto: uno pensato per <strong>adulti</strong> oppure uno pensato per <strong>giovani</strong>.
+  <p class="lead" style="margin-top:20px; margin-bottom:8px;">
+    Se ti può aiutare a prepararti alla confessione, prova questo piccolo percorso.
   </p>
 
-  <div class="row">
-    <button class="primary" onclick="startMode('adulti')">Percorso ADULTI</button>
-    <button class="youth" onclick="startMode('giovani')">Percorso GIOVANI</button>
+  <div class="row" style="margin-top:14px;">
+    <button class="primary" onclick="startMode('adulti')">👣 Percorso ADULTI</button>
+    <button class="youth" onclick="startMode('giovani')">🌱 Percorso GIOVANI</button>
   </div>
 
   <p class="small">
@@ -877,19 +878,45 @@
   }
 
 
-  function condividiApp(){
+  async function condividiApp(){
     const url = "https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/";
     const title = "Uno sguardo dentro di me";
     const text = "Una semplice app gratuita che aiuta a fare un esame di coscienza personale con serenità e fiducia nella misericordia di Dio.";
-    if(navigator.share){
-      navigator.share({title, text, url}).catch(()=>{});
-      return;
+
+    if (navigator.share) {
+      try{
+        await navigator.share({title, text, url});
+        return;
+      } catch(e){
+        // Se la condivisione viene annullata o non completa l'azione, provo il piano B.
+      }
     }
-    if(navigator.clipboard){
-      navigator.clipboard.writeText(url).then(()=>alert("Link copiato negli appunti.")).catch(()=>alert(url));
-      return;
+
+    if (navigator.clipboard && window.isSecureContext) {
+      try{
+        await navigator.clipboard.writeText(url);
+        alert("Link copiato negli appunti.");
+        return;
+      } catch(e){
+        // Continuo con il piano C.
+      }
     }
-    alert(url);
+
+    try{
+      const temp = document.createElement("textarea");
+      temp.value = url;
+      temp.setAttribute("readonly", "");
+      temp.style.position = "absolute";
+      temp.style.left = "-9999px";
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand("copy");
+      document.body.removeChild(temp);
+      alert("Link copiato negli appunti.");
+      return;
+    } catch(e){
+      alert("Copia questo link e condividilo:\n\n" + url);
+    }
   }
 
   function initInstallHint(){
