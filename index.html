@@ -233,7 +233,7 @@
   @media(min-width:720px){
     .row{grid-template-columns:1fr 1fr}
   }
-  input, textarea, select{
+  textarea{
     width:100%;
     font-size:16px;
     padding:14px;
@@ -242,9 +242,6 @@
     margin-top:10px;
     box-sizing:border-box;
     background:#fff;
-  }
-  select{appearance:none}
-  textarea{
     min-height:220px;
     line-height:1.45;
   }
@@ -259,17 +256,6 @@
     font-size:14px;
     line-height:1.5;
   }
-  .section-title{
-    font-size:13px;
-    text-transform:uppercase;
-    letter-spacing:.04em;
-    color:#5d6b63;
-    margin-top:8px;
-    text-align:left;
-    font-weight:bold;
-  }
-
-  .footer-actions{margin-top:16px}
 
   @media print {
     body {
@@ -282,12 +268,12 @@
       visibility: hidden !important;
     }
 
-    #screen4,
-    #screen4 * {
+    #screen3,
+    #screen3 * {
       visibility: visible !important;
     }
 
-    #screen4 {
+    #screen3 {
       display:block !important;
       position:absolute;
       inset:0;
@@ -302,7 +288,7 @@
       text-align:left;
     }
 
-    #screen4 h1 {
+    #screen3 h1 {
       display:block !important;
       font-size:20pt;
       margin:0 0 12pt;
@@ -310,9 +296,8 @@
       text-align:left;
     }
 
-    #screen4 .small,
-    #screen4 .row,
-    #screen4 .footer-actions {
+    #screen3 .small,
+    #screen3 .row {
       display:none !important;
     }
 
@@ -368,17 +353,11 @@
     che trova nei Dieci Comandamenti e nel comandamento dell’amore il suo orientamento fondamentale.
   </p>
 
-
   <button class="secondary" onclick="condividiApp()">Condividi questa app</button>
-
-  <div class="row">
-    <button class="secondary" onclick="loadSaved()">Apri promemoria salvato</button>
-    <button class="secondary" onclick="clearSaved()">Cancella promemoria salvato</button>
-  </div>
 
   <p class="muted" style="margin-top:18px">
     Questa app non sostituisce la confessione.<br>
-    Il salvataggio resta solo sul tuo dispositivo.
+    Il testo resta solo durante questa sessione.
   </p>
 </div>
 
@@ -397,83 +376,15 @@
 </div>
 
 <div class="card hidden" id="screen3">
-  <h1>Un piccolo passo per ricominciare</h1>
-  <p class="small"><strong>Ecco un invito concreto di conversione:</strong></p>
+  <h1>Ecco il tuo esame di coscienza</h1>
+  <p class="small"><strong>Un passo concreto per oggi</strong></p>
   <div id="invitoConversione" class="prayer" style="margin-top:14px;"></div>
-  <p class="small">Puoi scrivere un proposito concreto, semplice e possibile. È facoltativo.</p>
 
-  <input id="proposito" placeholder="Es. pregherò qualche minuto ogni giorno; cercherò più pazienza; sarò più sincero..." oninput="saveSessionState()" />
-
-  <div class="prayer" style="margin-top:18px; background:#edf7f0; border:1px solid #cfe3d6; padding:18px;">
-    <div style="font-style:normal; font-weight:bold; color:#4f6b59; margin-bottom:8px;">Ricorda:</div>
-    <div style="font-size:17px; line-height:1.6;">
-      “Dio non si stanca mai di perdonare: siamo noi che ci stanchiamo di chiedere misericordia.
-      Ma Lui non si stanca mai e ci aiuta sempre a ricominciare.”
-    </div>
-    <div class="small" style="margin-top:10px;">— Papa Francesco</div>
-  </div>
-
-  <div class="row">
-    <button class="primary" onclick="generateConfessionText()">Genera promemoria per la confessione</button>
-    <button class="secondary" onclick="skipProposito()">Salta</button>
-  </div>
-</div>
-
-<div class="card hidden" id="screen4">
-  <h1>Promemoria per la confessione</h1>
-  <p class="small">Puoi leggerlo così com'è, oppure modificarlo.</p>
-
+  <p class="small" style="margin-top:18px;"><strong>Riassunto automatico</strong></p>
   <div class="box" id="finalText"></div>
 
-  <div class="row footer-actions">
-    <button class="secondary" onclick="toggleEdit()">Modifica</button>
-    <button class="secondary" onclick="saveLocal()">Salva</button>
-  </div>
-
   <div class="row">
     <button class="secondary" onclick="exportTxt()">Salva come file (.txt)</button>
-    <button class="secondary" onclick="window.print()">Stampa</button>
-  </div>
-
-  <div class="row">
-    <button class="secondary" onclick="copyText()">Copia testo</button>
-    <button class="secondary" onclick="restart()">Nuovo esame</button>
-  </div>
-</div>
-
-<div class="card hidden" id="screen4edit">
-  <h1>Modifica il promemoria</h1>
-  <p class="small">Puoi correggere, accorciare o personalizzare il promemoria prima di salvarlo.</p>
-
-  <textarea id="editText"></textarea>
-
-  <div class="row">
-    <button class="primary" onclick="applyEdit()">Applica modifiche</button>
-    <button class="secondary" onclick="toggleEdit()">Annulla</button>
-  </div>
-
-  <div class="row">
-    <button class="secondary" onclick="saveLocal()">Salva</button>
-    <button class="secondary" onclick="exportTxt()">Salva come file (.txt)</button>
-  </div>
-</div>
-
-<div class="card hidden" id="screen5">
-  <h1>Grazie per questo momento</h1>
-
-  <div class="prayer">
-    Signore, tu conosci il mio cuore.<br>
-    Donami la forza di ricominciare<br>
-    e di camminare nella tua misericordia.
-  </div>
-
-  <p class="small" style="margin-top:18px; line-height:1.6;">
-    Se senti il desiderio di fare un passo in più, puoi portare questo proposito
-    nella preghiera o nel dialogo con un sacerdote nel sacramento della riconciliazione.
-  </p>
-
-  <div class="row">
-    <button class="secondary" onclick="condividiApp()">Condividi questa app</button>
     <button class="secondary" onclick="restart()">Nuovo esame</button>
   </div>
 </div>
@@ -484,7 +395,6 @@
   let questions = [];
   let answers = [];
 
-  const STORAGE_KEY = "sguardo_confessione_v8";
   const SESSION_STATE_KEY = "sguardo_session_state_v1";
 
   const questionSets = {
@@ -663,16 +573,17 @@
   };
 
   function show(id){
-    ["screen1","screen2","screen3","screen4","screen4edit","screen5"].forEach(x=>{
-      document.getElementById(x).classList.add("hidden");
+    ["screen1","screen2","screen3"].forEach(function(x){
+      const el = document.getElementById(x);
+      if (el) el.classList.add("hidden");
     });
     const el = document.getElementById(id);
+    if (!el) return;
     el.classList.remove("hidden");
     el.classList.remove("fade-in");
     void el.offsetWidth;
     el.classList.add("fade-in");
   }
-
 
   function trackEvent(path, title){
     try {
@@ -683,13 +594,11 @@
           event: true
         });
       }
-    } catch(e) {
-      // non bloccare mai il percorso per una statistica
-    }
+    } catch(e) {}
   }
 
   function getCurrentScreenId(){
-    const ids = ["screen1","screen2","screen3","screen4","screen4edit","screen5"];
+    const ids = ["screen1","screen2","screen3"];
     for (const id of ids){
       const el = document.getElementById(id);
       if (el && !el.classList.contains("hidden")) return id;
@@ -704,7 +613,6 @@
         mode,
         answers,
         currentScreen: getCurrentScreenId(),
-        proposito: document.getElementById("proposito") ? document.getElementById("proposito").value : "",
         finalText: document.getElementById("finalText") ? document.getElementById("finalText").textContent : ""
       };
       sessionStorage.setItem(SESSION_STATE_KEY, JSON.stringify(payload));
@@ -729,9 +637,6 @@
       step = Number.isInteger(payload.step) ? payload.step : 0;
       answers = Array.isArray(payload.answers) ? payload.answers : [];
 
-      if (document.getElementById("proposito")) {
-        document.getElementById("proposito").value = payload.proposito || "";
-      }
       if (document.getElementById("finalText")) {
         document.getElementById("finalText").textContent = payload.finalText || "";
       }
@@ -746,14 +651,8 @@
         showQuestion();
       } else if(screen === "screen3") {
         updateConcreteInvitation();
+        updateSummaryText();
         show("screen3");
-      } else if(screen === "screen4") {
-        show("screen4");
-      } else if(screen === "screen4edit") {
-        show("screen4edit");
-        document.getElementById("editText").value = payload.finalText || "";
-      } else if(screen === "screen5") {
-        show("screen5");
       } else {
         show("screen1");
       }
@@ -766,12 +665,13 @@
   function startMode(selectedMode){
     step = 0;
     answers = [];
-    document.getElementById("proposito").value = "";
-    document.getElementById("finalText").textContent = "";
+    if (document.getElementById("finalText")) {
+      document.getElementById("finalText").textContent = "";
+    }
     mode = selectedMode || "adulti";
     questions = questionSets[mode] || questionSets.adulti;
 
-    trackEvent(`percorso-${mode}`, `Percorso ${mode}`);
+    trackEvent(`percorso-${mode}`, `Avvio percorso ${mode}`);
 
     show("screen2");
     showQuestion();
@@ -780,6 +680,7 @@
 
   function showQuestion(){
     const q = questions[step];
+    if (!q) return;
     document.getElementById("progress").innerText = `Domanda ${step+1} di ${questions.length}`;
     document.getElementById("modeBadge").innerText = mode === "giovani" ? "Giovani" : "Adulti";
     document.getElementById("questionHint").innerText = q.area;
@@ -788,12 +689,10 @@
     document.getElementById("negativeBtn").innerHTML = `<span class="label">Da portare in confessione</span>${q.negative}`;
 
     const previousBtn = document.getElementById("previousBtn");
-    if(previousBtn){
-      if(step > 0){
-        previousBtn.classList.remove("hidden");
-      } else {
-        previousBtn.classList.add("hidden");
-      }
+    if(step > 0){
+      previousBtn.classList.remove("hidden");
+    } else {
+      previousBtn.classList.add("hidden");
     }
 
     saveSessionState();
@@ -806,7 +705,7 @@
     screen2.style.opacity = "0.35";
     screen2.style.pointerEvents = "none";
 
-    setTimeout(() => {
+    setTimeout(function(){
       step++;
       if(step < questions.length){
         showQuestion();
@@ -816,6 +715,8 @@
         screen2.style.opacity = "1";
         screen2.style.pointerEvents = "auto";
         updateConcreteInvitation();
+        updateSummaryText();
+        trackEvent("esame-completato", "Esame di coscienza completato");
         show("screen3");
         saveSessionState();
       }
@@ -828,10 +729,6 @@
       showQuestion();
       saveSessionState();
     }
-  }
-
-  function skipProposito(){
-    generateConfessionText();
   }
 
   function getConcreteInvitation(negatives){
@@ -861,8 +758,8 @@
       "Bene possibile": "compi oggi un piccolo gesto gratuito di aiuto."
     };
 
-    for (let n of negatives){
-      if (gestureMap[n.area]){
+    for (const n of negatives){
+      if (gestureMap[n.area]) {
         return gestureMap[n.area];
       }
     }
@@ -872,124 +769,42 @@
 
   function updateConcreteInvitation(){
     const negatives = questions
-      .map((q, i) => answers[i] ? {confession:q.confession, area:q.area} : null)
+      .map(function(q, i){ return answers[i] ? {confession:q.confession, area:q.area} : null; })
       .filter(Boolean);
     document.getElementById("invitoConversione").textContent = getConcreteInvitation(negatives);
     saveSessionState();
   }
 
-  function generateConfessionText(){
+  function updateSummaryText(){
     const negatives = questions
-      .map((q, i) => answers[i] ? {confession:q.confession, area:q.area} : null)
+      .map(function(q, i){ return answers[i] ? {confession:q.confession, area:q.area} : null; })
       .filter(Boolean);
 
-    let text = "Padre, chiedo perdono per ";
+    let text = "Nel mio esame di coscienza ho riconosciuto:";
     if (negatives.length === 0) {
-      text += "la poca chiarezza nel riconoscere i miei limiti e per tutto ciò che porto nel cuore. Mi affido alla misericordia di Dio.";
-    } else if (negatives.length === 1) {
-      text += negatives[0].confession + ". Desidero affidare tutto questo alla misericordia di Dio.";
-    } else if (negatives.length === 2) {
-      text += negatives[0].confession + " e per " + negatives[1].confession + ". Desidero affidare tutto questo alla misericordia di Dio.";
+      text += "\n- alcuni limiti e fragilità che porto nel cuore";
     } else {
-      text += negatives.slice(0, -1).map(n=>n.confession).join(", per ") + ", e per " + negatives[negatives.length - 1].confession + ". Desidero affidare tutto questo alla misericordia di Dio.";
+      text += "\n- " + negatives.map(function(n){ return n.confession; }).join("\n- ");
     }
 
-    const prop = document.getElementById("proposito").value.trim();
-    if (prop) {
-      text += "\n\nProposito concreto: " + prop;
-    }
-
-    text += "\n\n────────────────\n";
-    text += "\nAtto di dolore\n\n";
-    text += "Mio Dio, mi pento e mi dolgo con tutto il cuore dei miei peccati,\n";
-    text += "perché peccando ho meritato i tuoi castighi\n";
-    text += "e molto più perché ho offeso te,\n";
-    text += "infinitamente buono e degno di essere amato sopra ogni cosa.\n\n";
-    text += "Propongo con il tuo santo aiuto\n";
-    text += "di non offenderti mai più\n";
-    text += "e di fuggire le occasioni prossime di peccato.\n\n";
-    text += "Signore, misericordia, perdonami.";
-
+    text += "\n\nDesidero affidare tutto questo alla misericordia di Dio.";
 
     document.getElementById("finalText").textContent = text;
-    trackEvent("promemoria-finalizzato", "Promemoria confessione");
-    show("screen4");
     saveSessionState();
-  }
-
-  function toggleEdit(){
-    if (!document.getElementById("screen4edit").classList.contains("hidden")) {
-      show("screen4");
-      return;
-    }
-    document.getElementById("editText").value = document.getElementById("finalText").textContent || "";
-    show("screen4edit");
-  }
-
-  function applyEdit(){
-    document.getElementById("finalText").textContent = document.getElementById("editText").value || "";
-    show("screen4");
-    saveSessionState();
-  }
-
-  function saveLocal(){
-    try{
-      const payload = {
-        savedAt: new Date().toISOString(),
-        mode: mode,
-        text: document.getElementById("screen4edit").classList.contains("hidden")
-          ? document.getElementById("finalText").textContent
-          : document.getElementById("editText").value
-      };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-      alert("Promemoria salvato sul dispositivo.");
-    } catch(e){
-      alert("Impossibile salvare (memoria piena o limitazioni del browser).");
-    }
-  }
-
-  function loadSaved(){
-    try{
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if(!raw){ alert("Nessun promemoria salvato."); return; }
-      const payload = JSON.parse(raw);
-      document.getElementById("finalText").textContent = payload.text || "";
-      show("screen4");
-      saveSessionState();
-    } catch(e){
-      alert("Non riesco a leggere il promemoria salvato.");
-    }
-  }
-
-  function clearSaved(){
-    if(!confirm("Cancellare il promemoria salvato dal dispositivo?")) return;
-    localStorage.removeItem(STORAGE_KEY);
-    alert("Promemoria salvato cancellato.");
   }
 
   function exportTxt(){
-    const text = document.getElementById("screen4edit").classList.contains("hidden")
-      ? document.getElementById("finalText").textContent
-      : document.getElementById("editText").value;
+    const text = document.getElementById("finalText").textContent || "";
     const blob = new Blob([text], {type:"text/plain;charset=utf-8"});
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     const today = new Date().toLocaleDateString('it-IT').replaceAll("/","-");
     a.href = url;
-    a.download = `promemoria_confessione_${today}.txt`;
+    a.download = `esame_di_coscienza_${today}.txt`;
     document.body.appendChild(a);
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
-  }
-
-  function copyText(){
-    const text = document.getElementById("finalText").textContent || "";
-    navigator.clipboard.writeText(text).then(()=>{
-      alert("Promemoria copiato.");
-    }).catch(()=>{
-      alert("Copia non disponibile: prova a selezionare e copiare manualmente.");
-    });
   }
 
   function restart(){
@@ -998,7 +813,6 @@
     clearSessionState();
     show("screen1");
   }
-
 
   async function condividiApp(){
     const url = "https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/";
@@ -1009,9 +823,7 @@
       try{
         await navigator.share({title, text, url});
         return;
-      } catch(e){
-        // Se la condivisione viene annullata o non completa l'azione, provo il piano B.
-      }
+      } catch(e) {}
     }
 
     if (navigator.clipboard && window.isSecureContext) {
@@ -1019,9 +831,7 @@
         await navigator.clipboard.writeText(url);
         alert("Link copiato negli appunti.");
         return;
-      } catch(e){
-        // Continuo con il piano C.
-      }
+      } catch(e) {}
     }
 
     try{
@@ -1035,7 +845,6 @@
       document.execCommand("copy");
       document.body.removeChild(temp);
       alert("Link copiato negli appunti.");
-      return;
     } catch(e){
       alert("Copia questo link e condividilo:\n\n" + url);
     }
@@ -1051,7 +860,7 @@
     }
   }
 
-  window.addEventListener("load", () => {
+  window.addEventListener("load", function(){
     initInstallHint();
     if (!restoreSessionState()) {
       show("screen1");
@@ -1059,8 +868,8 @@
   });
 
   if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./sw.js").catch(() => {});
+    window.addEventListener("load", function(){
+      navigator.serviceWorker.register("./sw.js").catch(function(){});
     });
   }
 </script>
