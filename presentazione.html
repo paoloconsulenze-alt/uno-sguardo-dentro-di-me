@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presentazione – Uno sguardo dentro di me</title>
+<meta name="description" content="Presentazione della web app Uno sguardo dentro di me: un aiuto semplice, riservato e guidato per prepararsi alla confessione.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/presentazione.html">
+<meta property="og:title" content="Presentazione – Uno sguardo dentro di me">
+<meta property="og:description" content="Una web app gratuita, semplice e riservata per l’esame di coscienza e la preparazione alla confessione.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/presentazione.html">
+<meta property="og:image" content="https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Presentazione – Uno sguardo dentro di me">
+<meta name="twitter:description" content="Una web app gratuita, semplice e riservata per l’esame di coscienza e la preparazione alla confessione.">
+<meta name="twitter:image" content="https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/social-preview.png">
+<link rel="icon" href="./icon-192.png">
+<meta name="theme-color" content="#6bbf8a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Presentazione – Uno sguardo dentro di me",
+  "description": "Pagina di presentazione della web app Uno sguardo dentro di me, pensata per accompagnare l’esame di coscienza e la preparazione alla confessione.",
+  "inLanguage": "it",
+  "url": "https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/presentazione.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Uno sguardo dentro di me",
+    "url": "https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/"
+  }
+}
+</script>
+<style>
+  :root{
+    --bg:#f4f8f5;
+    --card:#ffffff;
+    --text:#27322c;
+    --muted:#617067;
+    --line:#dde7df;
+    --green:#68b786;
+    --green-dark:#4f9b6d;
+    --green-soft:#edf7f0;
+    --gold:#f6edd6;
+    --shadow:0 8px 26px rgba(0,0,0,0.07);
+    --radius:22px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    color:var(--text);
+    background:linear-gradient(180deg,#f9fbfa 0%, var(--bg) 100%);
+    line-height:1.6;
+  }
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:20px 16px 40px;
+  }
+  .hero, .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+  .hero{
+    padding:28px 22px;
+    text-align:center;
+    margin-bottom:18px;
+  }
+  .eyebrow{
+    display:inline-block;
+    padding:7px 12px;
+    background:var(--green-soft);
+    color:var(--green-dark);
+    border-radius:999px;
+    font-size:0.92rem;
+    font-weight:700;
+    margin-bottom:12px;
+  }
+  h1{
+    margin:0 0 12px;
+    font-size:2rem;
+    line-height:1.2;
+  }
+  .subtitle{
+    font-size:1.08rem;
+    color:var(--muted);
+    max-width:720px;
+    margin:0 auto 18px;
+  }
+  .quote{
+    max-width:640px;
+    margin:16px auto 0;
+    padding:14px 16px;
+    border-radius:16px;
+    background:#fafcfb;
+    border:1px solid var(--line);
+    font-style:italic;
+  }
+  .buttons{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:20px;
+  }
+  .btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:12px 18px;
+    border-radius:14px;
+    font-weight:700;
+    transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px); opacity:.95}
+  .btn-primary{background:var(--green); color:#fff;}
+  .btn-secondary{background:#fff; color:var(--green-dark); border:1px solid var(--line);}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:16px;
+    margin:18px 0;
+  }
+  .card{padding:20px 18px;}
+  h2{margin:0 0 10px; font-size:1.2rem;}
+  p{margin:0 0 12px}
+  ul{margin:0; padding-left:20px}
+  li{margin:7px 0}
+  .highlight{background:var(--gold); border:1px solid #eadfbf;}
+  .privacy{background:var(--green-soft); border:1px solid #d8eadf;}
+  .section-title{margin:28px 0 10px; font-size:1.4rem; text-align:center;}
+  .steps{counter-reset:step; display:grid; gap:12px;}
+  .step{
+    position:relative;
+    padding:16px 16px 16px 58px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+  }
+  .step::before{
+    counter-increment:step;
+    content:counter(step);
+    position:absolute;
+    left:16px;
+    top:14px;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+  }
+  .footer{text-align:center; color:var(--muted); font-size:0.95rem; margin-top:24px;}
+  @media (max-width:640px){
+    h1{font-size:1.7rem}
+    .hero{padding:24px 16px}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Presentazione aggiornata</div>
+      <h1>Uno sguardo dentro di me</h1>
+      <p class="subtitle">
+        Una web app gratuita per accompagnare l’esame di coscienza e la preparazione alla confessione
+        con un linguaggio semplice, uno stile accogliente e una forte attenzione alla riservatezza.
+      </p>
+      <div class="quote">
+        Questo è un momento tra te e la tua coscienza.<br>
+        Nulla viene salvato o trasmesso.<br>
+        Solo tu conosci le tue risposte.
+      </div>
+      <div class="quote" style="margin-top:12px;">
+        “La misericordia di Dio è la nostra liberazione e la nostra felicità.”<br>
+        <strong>— Papa Francesco</strong>
+      </div>
+      <div class="buttons">
+        <a class="btn btn-primary" href="https://paoloconsulenze-alt.github.io/uno-sguardo-dentro-di-me/">Apri l’app</a>
+        <a class="btn btn-secondary" href="#perche">Scopri di più</a>
+      </div>
+    </section>
+
+    <div class="grid" id="perche">
+      <section class="card highlight">
+        <h2>Perché è nata</h2>
+        <p>
+          Molte persone desiderano confessarsi, ma non sempre sanno da dove cominciare.
+          Questa app nasce per offrire un aiuto discreto, chiaro e rispettoso, capace di accompagnare
+          la riflessione personale senza creare ansia o distanza.
+        </p>
+      </section>
+
+      <section class="card privacy">
+        <h2>Uno spazio personale e riservato</h2>
+        <p>
+          La fiducia è essenziale. Per questo l’app chiarisce fin dall’inizio che le risposte non vengono
+          registrate, salvate o inviate. Il percorso resta personale, libero e sereno.
+        </p>
+      </section>
+    </div>
+
+    <h2 class="section-title">Che cosa offre</h2>
+    <div class="grid">
+      <section class="card">
+        <h2>Due percorsi guidati</h2>
+        <p>
+          Fin dalla prima schermata la persona può scegliere fra il <strong>percorso adulti</strong>
+          e il <strong>percorso giovani</strong>, con domande semplici ma profonde.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Tradizione e linguaggio di oggi</h2>
+        <p>
+          Il riferimento alla tradizione cristiana resta ben presente, anche con un cenno ai
+          <strong>Dieci Comandamenti</strong>, ma viene proposto con parole accessibili e con un tono più umano.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Un aiuto, non un giudizio</h2>
+        <p>
+          L’app non sostituisce il sacerdote e non pretende di dare risposte automatiche:
+          vuole solo accompagnare la persona a prepararsi meglio all’incontro con il sacramento.
+        </p>
+      </section>
+    </div>
+
+    <h2 class="section-title">Come si usa</h2>
+    <div class="steps">
+      <div class="step">
+        Si apre la pagina iniziale, si legge la breve rassicurazione sulla riservatezza e si sceglie uno dei due percorsi proposti.
+      </div>
+      <div class="step">
+        Si risponde alle domande con calma; se serve, si può anche tornare alla domanda precedente.
+      </div>
+      <div class="step">
+        Alla fine compare un invito concreto per oggi e un <strong>riassunto automatico</strong> essenziale dell’esame di coscienza.
+      </div>
+      <div class="step">
+        Il risultato può essere <strong>salvato come file .txt</strong> oppure si può iniziare subito un <strong>nuovo esame</strong>.
+      </div>
+    </div>
+
+    <h2 class="section-title">Il suo stile</h2>
+    <section class="card">
+      <ul>
+        <li><strong>Semplice</strong>, perché tutti possano usarla senza difficoltà.</li>
+        <li><strong>Accogliente</strong>, perché la confessione non sia percepita come un tribunale, ma come un cammino di verità e misericordia.</li>
+        <li><strong>Moderna</strong>, perché utilizza il digitale con equilibrio, senza perdere il senso spirituale.</li>
+        <li><strong>Rispettosa</strong>, perché lascia alla coscienza e alla libertà personale il loro spazio decisivo.</li>
+      </ul>
+    </section>
+
+    <h2 class="section-title">Una formula che riassume bene il progetto</h2>
+    <section class="card">
+      <p style="font-size:1.06rem; text-align:center; margin-bottom:0;">
+        <strong>Uno strumento antico nello spirito, ma nuovo nel modo di accompagnare.</strong>
+      </p>
+    </section>
+
+    <p class="footer">
+      Pagina di presentazione della web app <strong>Uno sguardo dentro di me</strong>.
+    </p>
+  </div>
+
+  <script data-goatcounter="https://sguardodentro2.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
